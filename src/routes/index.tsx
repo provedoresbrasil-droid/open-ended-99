@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { Globe, Play, ArrowUpRight, Instagram, MessageCircle, Mail, ShieldCheck } from "lucide-react";
 
 export const Route = createFileRoute("/")({
