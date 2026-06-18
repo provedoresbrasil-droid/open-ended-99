@@ -359,6 +359,7 @@ function LinkCard({
   primary = false,
   accent = false,
   compact = false,
+  theme,
 }: {
   href: string;
   icon: React.ReactNode;
@@ -367,7 +368,9 @@ function LinkCard({
   primary?: boolean;
   accent?: boolean;
   compact?: boolean;
+  theme?: CardTheme;
 }) {
+  const t = theme ? THEMES[theme] : undefined;
   // 3D tilt with spring
   const ref = useRef<HTMLAnchorElement>(null);
   const mx = useMotionValue(0);
@@ -380,7 +383,7 @@ function LinkCard({
   const spotlight = useTransform(
     [sx, sy] as MotionValue<number>[] & MotionValue<number>,
     ([x, y]: number[]) =>
-      `radial-gradient(220px circle at ${x}% ${y}%, rgba(255,255,255,0.14), transparent 65%)`,
+      `radial-gradient(220px circle at ${x}% ${y}%, rgba(255,255,255,0.18), transparent 65%)`,
   );
 
   const onMove = (e: React.PointerEvent<HTMLAnchorElement>) => {
@@ -409,8 +412,30 @@ function LinkCard({
       onPointerLeave={onLeave}
       whileTap={{ scale: 0.985 }}
       style={{ rotateX: rx, rotateY: ry, transformPerspective: 900 }}
-      className="group relative block overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.06] to-white/[0.02] backdrop-blur-xl shadow-[0_1px_0_0_rgba(255,255,255,0.06)_inset,0_20px_60px_-20px_rgba(0,0,0,0.8)] transition-colors hover:border-white/20 will-change-transform"
+      className={`group relative block overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.06] to-white/[0.02] backdrop-blur-xl shadow-[0_1px_0_0_rgba(255,255,255,0.06)_inset,0_20px_60px_-20px_rgba(0,0,0,0.8)] transition-colors hover:border-white/20 will-change-transform ${t?.accentRing ?? ""}`}
     >
+      {/* Themed background */}
+      {t && (
+        <>
+          <span
+            aria-hidden
+            className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${t.gradient} opacity-60`}
+          />
+          {t.pattern && (
+            <span aria-hidden className={`pointer-events-none absolute inset-0 opacity-40 ${t.pattern}`} />
+          )}
+          <motion.span
+            aria-hidden
+            animate={{ scale: [1, 1.15, 1], opacity: [0.5, 0.8, 0.5] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+            className={`pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full blur-3xl ${t.glow}`}
+          />
+          <span
+            aria-hidden
+            className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"
+          />
+        </>
+      )}
       {/* Spotlight */}
       <motion.span
         aria-hidden
@@ -418,7 +443,8 @@ function LinkCard({
         className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
       />
       {/* Shimmer sweep */}
-      <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/[0.10] to-transparent transition-transform duration-700 group-hover:translate-x-full" />
+      <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/[0.12] to-transparent transition-transform duration-700 group-hover:translate-x-full" />
+
 
       <span
         className={`relative flex items-center gap-4 ${compact ? "p-3.5" : "p-4"}`}
