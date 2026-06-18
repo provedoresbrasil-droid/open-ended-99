@@ -1,5 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { motion, type Variants } from "framer-motion";
+import {
+  motion,
+  useMotionValue,
+  useSpring,
+  useTransform,
+  useInView,
+  animate,
+  type Variants,
+  type MotionValue,
+} from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 import { Globe, Play, ArrowUpRight, Instagram, MessageCircle, Mail, ShieldCheck } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -32,11 +42,33 @@ const container: Variants = {
   show: { transition: { staggerChildren: 0.08, delayChildren: 0.1 } },
 };
 const item: Variants = {
-  hidden: { opacity: 0, y: 16 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: EASE } },
+  hidden: { opacity: 0, y: 20, filter: "blur(8px)" },
+  show: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: { duration: 0.7, ease: EASE },
+  },
 };
 
 function Index() {
+  // Parallax pointer for the ambient glow
+  const px = useMotionValue(0);
+  const py = useMotionValue(0);
+  const glowX = useSpring(px, { stiffness: 50, damping: 20 });
+  const glowY = useSpring(py, { stiffness: 50, damping: 20 });
+
+  useEffect(() => {
+    const onMove = (e: PointerEvent) => {
+      const x = (e.clientX / window.innerWidth - 0.5) * 60;
+      const y = (e.clientY / window.innerHeight - 0.5) * 60;
+      px.set(x);
+      py.set(y);
+    };
+    window.addEventListener("pointermove", onMove);
+    return () => window.removeEventListener("pointermove", onMove);
+  }, [px, py]);
+
   return (
     <main className="relative min-h-screen overflow-hidden bg-black text-white antialiased">
       {/* Apple-style ambient background */}
@@ -44,10 +76,17 @@ function Index() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-10%,#1c1c1e_0%,#000_60%)]" />
         <motion.div
           aria-hidden
-          initial={{ opacity: 0.4 }}
-          animate={{ opacity: [0.35, 0.55, 0.35] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute left-1/2 top-[-10%] h-[420px] w-[420px] -translate-x-1/2 rounded-full bg-white/5 blur-3xl"
+          style={{ x: glowX, y: glowY }}
+          animate={{ opacity: [0.35, 0.6, 0.35], scale: [1, 1.08, 1] }}
+          transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute left-1/2 top-[-10%] h-[460px] w-[460px] -translate-x-1/2 rounded-full bg-white/10 blur-3xl"
+        />
+        <motion.div
+          aria-hidden
+          style={{ x: useTransform(glowX, (v) => v * -0.6), y: useTransform(glowY, (v) => v * -0.6) }}
+          animate={{ opacity: [0.15, 0.3, 0.15] }}
+          transition={{ duration: 11, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute bottom-[-15%] right-[-10%] h-[380px] w-[380px] rounded-full bg-indigo-500/20 blur-3xl"
         />
         <div className="absolute inset-0 opacity-[0.06] [background-image:radial-gradient(rgba(255,255,255,0.6)_1px,transparent_1px)] [background-size:3px_3px]" />
       </div>
@@ -61,21 +100,45 @@ function Index() {
           className="flex flex-col items-center text-center"
         >
           <motion.div variants={item} className="relative">
+            {/* Pulsing rings */}
+            {[0, 1, 2].map((i) => (
+              <motion.span
+                key={i}
+                aria-hidden
+                initial={{ opacity: 0.5, scale: 1 }}
+                animate={{ opacity: 0, scale: 1.6 }}
+                transition={{ duration: 2.4, repeat: Infinity, ease: "easeOut", delay: i * 0.8 }}
+                className="absolute inset-0 rounded-full ring-1 ring-white/30"
+              />
+            ))}
             <motion.div
               aria-hidden
               animate={{ rotate: 360 }}
               transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
               className="absolute -inset-[3px] rounded-full bg-[conic-gradient(from_0deg,#3a3a3c,#1c1c1e,#48484a,#1c1c1e,#3a3a3c)]"
             />
-            <div className="relative grid h-24 w-24 place-items-center rounded-full bg-gradient-to-br from-zinc-800 to-black ring-1 ring-white/10">
+            <motion.div
+              whileHover={{ scale: 1.05, rotate: -3 }}
+              transition={{ type: "spring", stiffness: 300, damping: 18 }}
+              className="relative grid h-24 w-24 place-items-center rounded-full bg-gradient-to-br from-zinc-800 to-black ring-1 ring-white/10"
+            >
               <span className="bg-gradient-to-b from-white to-white/60 bg-clip-text text-2xl font-semibold tracking-tight text-transparent">
                 M
               </span>
-            </div>
+            </motion.div>
           </motion.div>
 
-          <motion.h1 variants={item} className="mt-5 text-2xl font-semibold tracking-tight sm:text-3xl">
-            Sua Marca
+          <motion.h1
+            variants={item}
+            className="relative mt-5 overflow-hidden bg-gradient-to-r from-white via-white/70 to-white bg-[length:200%_100%] bg-clip-text text-2xl font-semibold tracking-tight text-transparent sm:text-3xl"
+          >
+            <motion.span
+              animate={{ backgroundPosition: ["0% 50%", "200% 50%"] }}
+              transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
+              className="bg-gradient-to-r from-white via-white/40 to-white bg-[length:200%_100%] bg-clip-text text-transparent"
+            >
+              Sua Marca
+            </motion.span>
           </motion.h1>
           <motion.p variants={item} className="mt-1 text-sm font-medium text-white/50">
             @suamarca
@@ -85,9 +148,15 @@ function Index() {
           </motion.p>
           <motion.div
             variants={item}
+            whileHover={{ scale: 1.04 }}
             className="mt-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-xs font-medium text-white/70 backdrop-blur-xl"
           >
-            <ShieldCheck className="h-3.5 w-3.5 text-emerald-400" />
+            <motion.span
+              animate={{ scale: [1, 1.25, 1], opacity: [1, 0.6, 1] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <ShieldCheck className="h-3.5 w-3.5 text-emerald-400" />
+            </motion.span>
             Marca verificada · +5 anos no mercado
           </motion.div>
         </motion.section>
@@ -169,12 +238,12 @@ function Index() {
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: EASE }}
+          transition={{ duration: 0.7, ease: EASE }}
           className="mt-10 grid grid-cols-3 gap-3 rounded-2xl border border-white/10 bg-white/[0.03] p-4 backdrop-blur-xl"
         >
-          <Stat value="+100" label="Projetos" />
-          <Stat value="+1M" label="Views" />
-          <Stat value="+50" label="Clientes" />
+          <Stat to={100} prefix="+" label="Projetos" />
+          <Stat to={1} prefix="+" suffix="M" label="Views" />
+          <Stat to={50} prefix="+" label="Clientes" />
         </motion.section>
 
         {/* Final CTA */}
@@ -224,21 +293,65 @@ function LinkCard({
   accent?: boolean;
   compact?: boolean;
 }) {
+  // 3D tilt with spring
+  const ref = useRef<HTMLAnchorElement>(null);
+  const mx = useMotionValue(0);
+  const my = useMotionValue(0);
+  const rx = useSpring(useTransform(my, [-0.5, 0.5], [8, -8]), { stiffness: 200, damping: 18 });
+  const ry = useSpring(useTransform(mx, [-0.5, 0.5], [-10, 10]), { stiffness: 200, damping: 18 });
+  // Spotlight follow
+  const sx = useMotionValue(50);
+  const sy = useMotionValue(50);
+  const spotlight = useTransform(
+    [sx, sy] as MotionValue<number>[] & MotionValue<number>,
+    ([x, y]: number[]) =>
+      `radial-gradient(220px circle at ${x}% ${y}%, rgba(255,255,255,0.14), transparent 65%)`,
+  );
+
+  const onMove = (e: React.PointerEvent<HTMLAnchorElement>) => {
+    const el = ref.current;
+    if (!el) return;
+    const r = el.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width;
+    const y = (e.clientY - r.top) / r.height;
+    mx.set(x - 0.5);
+    my.set(y - 0.5);
+    sx.set(x * 100);
+    sy.set(y * 100);
+  };
+  const onLeave = () => {
+    mx.set(0);
+    my.set(0);
+  };
+
   return (
     <motion.a
+      ref={ref}
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      whileHover={{ y: -2 }}
+      onPointerMove={onMove}
+      onPointerLeave={onLeave}
       whileTap={{ scale: 0.985 }}
-      transition={{ type: "spring", stiffness: 400, damping: 28 }}
-      className="group relative block overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.06] to-white/[0.02] backdrop-blur-xl shadow-[0_1px_0_0_rgba(255,255,255,0.06)_inset,0_20px_60px_-20px_rgba(0,0,0,0.8)] transition-colors hover:border-white/20"
+      style={{ rotateX: rx, rotateY: ry, transformPerspective: 900 }}
+      className="group relative block overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.06] to-white/[0.02] backdrop-blur-xl shadow-[0_1px_0_0_rgba(255,255,255,0.06)_inset,0_20px_60px_-20px_rgba(0,0,0,0.8)] transition-colors hover:border-white/20 will-change-transform"
     >
-      {/* Specular highlight on hover */}
-      <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/[0.08] to-transparent transition-transform duration-700 group-hover:translate-x-full" />
+      {/* Spotlight */}
+      <motion.span
+        aria-hidden
+        style={{ background: spotlight }}
+        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+      />
+      {/* Shimmer sweep */}
+      <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/[0.10] to-transparent transition-transform duration-700 group-hover:translate-x-full" />
 
-      <span className={`relative flex items-center gap-4 ${compact ? "p-3.5" : "p-4"}`}>
-        <span
+      <span
+        className={`relative flex items-center gap-4 ${compact ? "p-3.5" : "p-4"}`}
+        style={{ transform: "translateZ(30px)" }}
+      >
+        <motion.span
+          whileHover={{ rotate: accent ? -8 : 6, scale: 1.08 }}
+          transition={{ type: "spring", stiffness: 300, damping: 14 }}
           className={`grid shrink-0 place-items-center rounded-xl ring-1 ring-white/10 ${
             compact ? "h-10 w-10" : "h-12 w-12"
           } ${
@@ -250,7 +363,7 @@ function LinkCard({
           }`}
         >
           {icon}
-        </span>
+        </motion.span>
         <span className="min-w-0 flex-1">
           <span className="flex items-center gap-2">
             <span className={`truncate font-semibold tracking-tight text-white ${compact ? "text-sm" : "text-base"}`}>
@@ -266,17 +379,57 @@ function LinkCard({
             {description}
           </span>
         </span>
-        <ArrowUpRight className="h-5 w-5 shrink-0 text-white/40 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-white" />
+        <motion.span
+          className="shrink-0"
+          initial={false}
+          whileHover={{ x: 3, y: -3 }}
+          transition={{ type: "spring", stiffness: 400, damping: 18 }}
+        >
+          <ArrowUpRight className="h-5 w-5 text-white/40 transition-colors duration-300 group-hover:text-white" />
+        </motion.span>
       </span>
     </motion.a>
   );
 }
 
-function Stat({ value, label }: { value: string; label: string }) {
+function Counter({ to, prefix = "", suffix = "" }: { to: number; prefix?: string; suffix?: string }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-30px" });
+  const [val, setVal] = useState(0);
+  useEffect(() => {
+    if (!inView) return;
+    const controls = animate(0, to, {
+      duration: 1.6,
+      ease: [0.22, 1, 0.36, 1],
+      onUpdate: (v) => setVal(v),
+    });
+    return () => controls.stop();
+  }, [inView, to]);
+  const display = to < 10 ? val.toFixed(1).replace(/\.0$/, "") : Math.round(val).toString();
+  return (
+    <span ref={ref}>
+      {prefix}
+      {display}
+      {suffix}
+    </span>
+  );
+}
+
+function Stat({
+  to,
+  prefix,
+  suffix,
+  label,
+}: {
+  to: number;
+  prefix?: string;
+  suffix?: string;
+  label: string;
+}) {
   return (
     <div className="text-center">
       <div className="bg-gradient-to-b from-white to-white/50 bg-clip-text text-lg font-semibold tracking-tight text-transparent sm:text-xl">
-        {value}
+        <Counter to={to} prefix={prefix} suffix={suffix} />
       </div>
       <div className="mt-0.5 text-[10px] uppercase tracking-[0.15em] text-white/45">{label}</div>
     </div>
@@ -292,14 +445,33 @@ function SocialIcon({
   label: string;
   children: React.ReactNode;
 }) {
+  // Magnetic hover
+  const ref = useRef<HTMLAnchorElement>(null);
+  const x = useSpring(0, { stiffness: 250, damping: 18 });
+  const y = useSpring(0, { stiffness: 250, damping: 18 });
+  const onMove = (e: React.PointerEvent<HTMLAnchorElement>) => {
+    const el = ref.current;
+    if (!el) return;
+    const r = el.getBoundingClientRect();
+    x.set(e.clientX - (r.left + r.width / 2));
+    y.set(e.clientY - (r.top + r.height / 2));
+  };
+  const onLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
   return (
     <motion.a
+      ref={ref}
       href={href}
       target="_blank"
       rel="noopener noreferrer"
       aria-label={label}
-      whileHover={{ y: -2, scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
+      onPointerMove={onMove}
+      onPointerLeave={onLeave}
+      style={{ x, y }}
+      whileHover={{ scale: 1.15 }}
+      whileTap={{ scale: 0.92 }}
       className="grid h-10 w-10 place-items-center rounded-full border border-white/10 bg-white/[0.04] text-white/70 backdrop-blur-xl transition-colors hover:border-white/20 hover:bg-white/10 hover:text-white"
     >
       {children}
