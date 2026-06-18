@@ -10,7 +10,50 @@ import {
   type MotionValue,
 } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import { Globe, Play, ArrowUpRight, Instagram, MessageCircle, Mail, ShieldCheck } from "lucide-react";
+import { Globe, Play, ArrowUpRight, Instagram, MessageCircle, Mail, ShieldCheck, Scissors, Mic, Camera } from "lucide-react";
+
+type CardTheme = "site" | "youtube" | "cuts" | "podcast" | "vlog";
+
+const THEMES: Record<
+  CardTheme,
+  { gradient: string; glow: string; accentRing: string; pattern?: string }
+> = {
+  site: {
+    gradient: "from-sky-500/30 via-indigo-600/20 to-transparent",
+    glow: "bg-sky-500/30",
+    accentRing: "ring-sky-400/30",
+    pattern:
+      "[background-image:linear-gradient(rgba(56,189,248,0.18)_1px,transparent_1px),linear-gradient(90deg,rgba(56,189,248,0.18)_1px,transparent_1px)] [background-size:22px_22px]",
+  },
+  youtube: {
+    gradient: "from-red-600/40 via-rose-700/25 to-transparent",
+    glow: "bg-red-500/40",
+    accentRing: "ring-red-400/30",
+    pattern:
+      "[background:repeating-linear-gradient(90deg,rgba(255,255,255,0.06)_0_2px,transparent_2px_8px)]",
+  },
+  cuts: {
+    gradient: "from-orange-500/35 via-amber-500/20 to-transparent",
+    glow: "bg-orange-500/35",
+    accentRing: "ring-orange-400/30",
+    pattern:
+      "[background:repeating-linear-gradient(45deg,rgba(255,255,255,0.05)_0_6px,transparent_6px_14px)]",
+  },
+  podcast: {
+    gradient: "from-violet-600/35 via-fuchsia-600/20 to-transparent",
+    glow: "bg-violet-500/35",
+    accentRing: "ring-violet-400/30",
+    pattern:
+      "[background:radial-gradient(circle_at_20%_50%,rgba(167,139,250,0.25),transparent_40%),radial-gradient(circle_at_80%_50%,rgba(232,121,249,0.2),transparent_40%)]",
+  },
+  vlog: {
+    gradient: "from-teal-500/35 via-cyan-600/20 to-transparent",
+    glow: "bg-cyan-500/35",
+    accentRing: "ring-cyan-400/30",
+    pattern:
+      "[background:radial-gradient(ellipse_at_top,rgba(34,211,238,0.2),transparent_60%)]",
+  },
+};
 
 export const Route = createFileRoute("/")({
   head: () => ({
