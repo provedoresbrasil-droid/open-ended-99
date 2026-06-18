@@ -245,6 +245,7 @@ function Index() {
               title="Acessar site oficial"
               description="Conheça a empresa, soluções, serviços e projetos."
               primary
+              theme="site"
             />
           </motion.div>
           <motion.div variants={item}>
@@ -254,6 +255,7 @@ function Index() {
               title="Canal principal no YouTube"
               description="Vídeos completos, conteúdos e novidades."
               accent
+              theme="youtube"
             />
           </motion.div>
         </motion.section>
@@ -276,28 +278,31 @@ function Index() {
             <motion.div variants={item}>
               <LinkCard
                 href={YOUTUBE_CUTS}
-                icon={<Play className="h-5 w-5 fill-current" />}
+                icon={<Scissors className="h-5 w-5" />}
                 title="Cortes"
                 description="Os melhores momentos em vídeos curtos."
                 compact
+                theme="cuts"
               />
             </motion.div>
             <motion.div variants={item}>
               <LinkCard
                 href={YOUTUBE_PODCAST}
-                icon={<Play className="h-5 w-5 fill-current" />}
+                icon={<Mic className="h-5 w-5" />}
                 title="Podcast"
                 description="Episódios completos em áudio e vídeo."
                 compact
+                theme="podcast"
               />
             </motion.div>
             <motion.div variants={item}>
               <LinkCard
                 href={YOUTUBE_VLOG}
-                icon={<Play className="h-5 w-5 fill-current" />}
+                icon={<Camera className="h-5 w-5" />}
                 title="Vlogs & Bastidores"
                 description="Rotina, viagens e bastidores da marca."
                 compact
+                theme="vlog"
               />
             </motion.div>
           </motion.div>
