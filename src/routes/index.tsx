@@ -10,7 +10,50 @@ import {
   type MotionValue,
 } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import { Globe, Play, ArrowUpRight, Instagram, MessageCircle, Mail, ShieldCheck } from "lucide-react";
+import { Globe, Play, ArrowUpRight, Instagram, MessageCircle, Mail, ShieldCheck, Scissors, Mic, Camera } from "lucide-react";
+
+type CardTheme = "site" | "youtube" | "cuts" | "podcast" | "vlog";
+
+const THEMES: Record<
+  CardTheme,
+  { gradient: string; glow: string; accentRing: string; pattern?: string }
+> = {
+  site: {
+    gradient: "from-sky-500/30 via-indigo-600/20 to-transparent",
+    glow: "bg-sky-500/30",
+    accentRing: "ring-sky-400/30",
+    pattern:
+      "[background-image:linear-gradient(rgba(56,189,248,0.18)_1px,transparent_1px),linear-gradient(90deg,rgba(56,189,248,0.18)_1px,transparent_1px)] [background-size:22px_22px]",
+  },
+  youtube: {
+    gradient: "from-red-600/40 via-rose-700/25 to-transparent",
+    glow: "bg-red-500/40",
+    accentRing: "ring-red-400/30",
+    pattern:
+      "[background:repeating-linear-gradient(90deg,rgba(255,255,255,0.06)_0_2px,transparent_2px_8px)]",
+  },
+  cuts: {
+    gradient: "from-orange-500/35 via-amber-500/20 to-transparent",
+    glow: "bg-orange-500/35",
+    accentRing: "ring-orange-400/30",
+    pattern:
+      "[background:repeating-linear-gradient(45deg,rgba(255,255,255,0.05)_0_6px,transparent_6px_14px)]",
+  },
+  podcast: {
+    gradient: "from-violet-600/35 via-fuchsia-600/20 to-transparent",
+    glow: "bg-violet-500/35",
+    accentRing: "ring-violet-400/30",
+    pattern:
+      "[background:radial-gradient(circle_at_20%_50%,rgba(167,139,250,0.25),transparent_40%),radial-gradient(circle_at_80%_50%,rgba(232,121,249,0.2),transparent_40%)]",
+  },
+  vlog: {
+    gradient: "from-teal-500/35 via-cyan-600/20 to-transparent",
+    glow: "bg-cyan-500/35",
+    accentRing: "ring-cyan-400/30",
+    pattern:
+      "[background:radial-gradient(ellipse_at_top,rgba(34,211,238,0.2),transparent_60%)]",
+  },
+};
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -89,7 +132,34 @@ function Index() {
           className="absolute bottom-[-15%] right-[-10%] h-[380px] w-[380px] rounded-full bg-indigo-500/20 blur-3xl"
         />
         <div className="absolute inset-0 opacity-[0.06] [background-image:radial-gradient(rgba(255,255,255,0.6)_1px,transparent_1px)] [background-size:3px_3px]" />
+        {/* Animated film grain */}
+        <motion.div
+          aria-hidden
+          animate={{ backgroundPosition: ["0% 0%", "100% 100%"] }}
+          transition={{ duration: 1.2, repeat: Infinity, ease: "linear" }}
+          className="absolute inset-0 opacity-[0.08] mix-blend-overlay [background-image:url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22160%22 height=%22160%22><filter id=%22n%22><feTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22 numOctaves=%222%22/></filter><rect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22 opacity=%220.7%22/></svg>')]"
+        />
+        {/* Vignette */}
+        <div className="absolute inset-0 [background:radial-gradient(ellipse_at_center,transparent_55%,rgba(0,0,0,0.9)_100%)]" />
+        {/* Scanlines */}
+        <div className="absolute inset-0 opacity-[0.04] [background:repeating-linear-gradient(0deg,rgba(255,255,255,0.5)_0_1px,transparent_1px_3px)]" />
       </div>
+
+      {/* Cinematic letterbox */}
+      <motion.div
+        aria-hidden
+        initial={{ y: "-100%" }}
+        animate={{ y: 0 }}
+        transition={{ duration: 1, ease: EASE, delay: 0.1 }}
+        className="pointer-events-none fixed inset-x-0 top-0 z-50 h-6 bg-black"
+      />
+      <motion.div
+        aria-hidden
+        initial={{ y: "100%" }}
+        animate={{ y: 0 }}
+        transition={{ duration: 1, ease: EASE, delay: 0.1 }}
+        className="pointer-events-none fixed inset-x-0 bottom-0 z-50 h-6 bg-black"
+      />
 
       <div className="mx-auto flex min-h-screen w-full max-w-md flex-col px-5 py-10 sm:py-14">
         {/* Hero */}
@@ -175,6 +245,7 @@ function Index() {
               title="Acessar site oficial"
               description="Conheça a empresa, soluções, serviços e projetos."
               primary
+              theme="site"
             />
           </motion.div>
           <motion.div variants={item}>
@@ -184,6 +255,7 @@ function Index() {
               title="Canal principal no YouTube"
               description="Vídeos completos, conteúdos e novidades."
               accent
+              theme="youtube"
             />
           </motion.div>
         </motion.section>
@@ -206,28 +278,31 @@ function Index() {
             <motion.div variants={item}>
               <LinkCard
                 href={YOUTUBE_CUTS}
-                icon={<Play className="h-5 w-5 fill-current" />}
+                icon={<Scissors className="h-5 w-5" />}
                 title="Cortes"
                 description="Os melhores momentos em vídeos curtos."
                 compact
+                theme="cuts"
               />
             </motion.div>
             <motion.div variants={item}>
               <LinkCard
                 href={YOUTUBE_PODCAST}
-                icon={<Play className="h-5 w-5 fill-current" />}
+                icon={<Mic className="h-5 w-5" />}
                 title="Podcast"
                 description="Episódios completos em áudio e vídeo."
                 compact
+                theme="podcast"
               />
             </motion.div>
             <motion.div variants={item}>
               <LinkCard
                 href={YOUTUBE_VLOG}
-                icon={<Play className="h-5 w-5 fill-current" />}
+                icon={<Camera className="h-5 w-5" />}
                 title="Vlogs & Bastidores"
                 description="Rotina, viagens e bastidores da marca."
                 compact
+                theme="vlog"
               />
             </motion.div>
           </motion.div>
@@ -284,6 +359,7 @@ function LinkCard({
   primary = false,
   accent = false,
   compact = false,
+  theme,
 }: {
   href: string;
   icon: React.ReactNode;
@@ -292,7 +368,9 @@ function LinkCard({
   primary?: boolean;
   accent?: boolean;
   compact?: boolean;
+  theme?: CardTheme;
 }) {
+  const t = theme ? THEMES[theme] : undefined;
   // 3D tilt with spring
   const ref = useRef<HTMLAnchorElement>(null);
   const mx = useMotionValue(0);
@@ -305,7 +383,7 @@ function LinkCard({
   const spotlight = useTransform(
     [sx, sy] as MotionValue<number>[] & MotionValue<number>,
     ([x, y]: number[]) =>
-      `radial-gradient(220px circle at ${x}% ${y}%, rgba(255,255,255,0.14), transparent 65%)`,
+      `radial-gradient(220px circle at ${x}% ${y}%, rgba(255,255,255,0.18), transparent 65%)`,
   );
 
   const onMove = (e: React.PointerEvent<HTMLAnchorElement>) => {
@@ -334,8 +412,30 @@ function LinkCard({
       onPointerLeave={onLeave}
       whileTap={{ scale: 0.985 }}
       style={{ rotateX: rx, rotateY: ry, transformPerspective: 900 }}
-      className="group relative block overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.06] to-white/[0.02] backdrop-blur-xl shadow-[0_1px_0_0_rgba(255,255,255,0.06)_inset,0_20px_60px_-20px_rgba(0,0,0,0.8)] transition-colors hover:border-white/20 will-change-transform"
+      className={`group relative block overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.06] to-white/[0.02] backdrop-blur-xl shadow-[0_1px_0_0_rgba(255,255,255,0.06)_inset,0_20px_60px_-20px_rgba(0,0,0,0.8)] transition-colors hover:border-white/20 will-change-transform ${t?.accentRing ?? ""}`}
     >
+      {/* Themed background */}
+      {t && (
+        <>
+          <span
+            aria-hidden
+            className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${t.gradient} opacity-60`}
+          />
+          {t.pattern && (
+            <span aria-hidden className={`pointer-events-none absolute inset-0 opacity-40 ${t.pattern}`} />
+          )}
+          <motion.span
+            aria-hidden
+            animate={{ scale: [1, 1.15, 1], opacity: [0.5, 0.8, 0.5] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+            className={`pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full blur-3xl ${t.glow}`}
+          />
+          <span
+            aria-hidden
+            className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"
+          />
+        </>
+      )}
       {/* Spotlight */}
       <motion.span
         aria-hidden
@@ -343,7 +443,8 @@ function LinkCard({
         className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
       />
       {/* Shimmer sweep */}
-      <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/[0.10] to-transparent transition-transform duration-700 group-hover:translate-x-full" />
+      <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/[0.12] to-transparent transition-transform duration-700 group-hover:translate-x-full" />
+
 
       <span
         className={`relative flex items-center gap-4 ${compact ? "p-3.5" : "p-4"}`}
