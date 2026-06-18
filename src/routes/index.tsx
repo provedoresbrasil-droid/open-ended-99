@@ -26,13 +26,14 @@ const INSTAGRAM_URL = "https://instagram.com/exemplo";
 const WHATSAPP_URL = "https://wa.me/5500000000000";
 const EMAIL_URL = "mailto:contato@exemplo.com";
 
-const container = {
+const EASE = [0.22, 1, 0.36, 1] as const;
+const container: Variants = {
   hidden: {},
   show: { transition: { staggerChildren: 0.08, delayChildren: 0.1 } },
 };
-const item = {
+const item: Variants = {
   hidden: { opacity: 0, y: 16 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] } },
+  show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: EASE } },
 };
 
 function Index() {
