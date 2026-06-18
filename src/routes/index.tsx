@@ -11,47 +11,47 @@ import {
 } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { Globe, Play, ArrowUpRight, Instagram, MessageCircle, Mail, ShieldCheck, Scissors, Mic, Camera } from "lucide-react";
+import bgSite from "@/assets/bg-site.jpg";
+import bgYoutube from "@/assets/bg-youtube.jpg";
+import bgCuts from "@/assets/bg-cuts.jpg";
+import bgPodcast from "@/assets/bg-podcast.jpg";
+import bgVlog from "@/assets/bg-vlog.jpg";
 
 type CardTheme = "site" | "youtube" | "cuts" | "podcast" | "vlog";
 
 const THEMES: Record<
   CardTheme,
-  { gradient: string; glow: string; accentRing: string; pattern?: string }
+  { image: string; gradient: string; glow: string; accentRing: string }
 > = {
   site: {
+    image: bgSite,
     gradient: "from-sky-500/30 via-indigo-600/20 to-transparent",
     glow: "bg-sky-500/30",
     accentRing: "ring-sky-400/30",
-    pattern:
-      "[background-image:linear-gradient(rgba(56,189,248,0.18)_1px,transparent_1px),linear-gradient(90deg,rgba(56,189,248,0.18)_1px,transparent_1px)] [background-size:22px_22px]",
   },
   youtube: {
+    image: bgYoutube,
     gradient: "from-red-600/40 via-rose-700/25 to-transparent",
     glow: "bg-red-500/40",
     accentRing: "ring-red-400/30",
-    pattern:
-      "[background:repeating-linear-gradient(90deg,rgba(255,255,255,0.06)_0_2px,transparent_2px_8px)]",
   },
   cuts: {
+    image: bgCuts,
     gradient: "from-orange-500/35 via-amber-500/20 to-transparent",
     glow: "bg-orange-500/35",
     accentRing: "ring-orange-400/30",
-    pattern:
-      "[background:repeating-linear-gradient(45deg,rgba(255,255,255,0.05)_0_6px,transparent_6px_14px)]",
   },
   podcast: {
+    image: bgPodcast,
     gradient: "from-violet-600/35 via-fuchsia-600/20 to-transparent",
     glow: "bg-violet-500/35",
     accentRing: "ring-violet-400/30",
-    pattern:
-      "[background:radial-gradient(circle_at_20%_50%,rgba(167,139,250,0.25),transparent_40%),radial-gradient(circle_at_80%_50%,rgba(232,121,249,0.2),transparent_40%)]",
   },
   vlog: {
+    image: bgVlog,
     gradient: "from-teal-500/35 via-cyan-600/20 to-transparent",
     glow: "bg-cyan-500/35",
     accentRing: "ring-cyan-400/30",
-    pattern:
-      "[background:radial-gradient(ellipse_at_top,rgba(34,211,238,0.2),transparent_60%)]",
   },
 };
 
@@ -417,22 +417,34 @@ function LinkCard({
       {/* Themed background */}
       {t && (
         <>
+          {/* Themed photo background */}
+          <motion.img
+            src={t.image}
+            alt=""
+            aria-hidden
+            loading="lazy"
+            width={1024}
+            height={512}
+            initial={{ scale: 1.05 }}
+            whileHover={{ scale: 1.12 }}
+            transition={{ duration: 1.2, ease: EASE }}
+            className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-40 mix-blend-luminosity transition-opacity duration-500 group-hover:opacity-60"
+          />
+          {/* Color wash */}
           <span
             aria-hidden
-            className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${t.gradient} opacity-60`}
+            className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${t.gradient} opacity-70 mix-blend-overlay`}
           />
-          {t.pattern && (
-            <span aria-hidden className={`pointer-events-none absolute inset-0 opacity-40 ${t.pattern}`} />
-          )}
           <motion.span
             aria-hidden
             animate={{ scale: [1, 1.15, 1], opacity: [0.5, 0.8, 0.5] }}
             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
             className={`pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full blur-3xl ${t.glow}`}
           />
+          {/* Readability scrim */}
           <span
             aria-hidden
-            className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"
+            className="pointer-events-none absolute inset-0 bg-gradient-to-r from-black/85 via-black/55 to-black/30"
           />
         </>
       )}
