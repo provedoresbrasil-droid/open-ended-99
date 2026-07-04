@@ -99,21 +99,6 @@ function Index() {
         />
       </div>
 
-      {/* Cinematic letterbox */}
-      <motion.div
-        aria-hidden
-        initial={{ y: "-100%" }}
-        animate={{ y: 0 }}
-        transition={{ duration: 1, ease: EASE, delay: 0.1 }}
-        className="pointer-events-none fixed inset-x-0 top-0 z-50 h-6 bg-black"
-      />
-      <motion.div
-        aria-hidden
-        initial={{ y: "100%" }}
-        animate={{ y: 0 }}
-        transition={{ duration: 1, ease: EASE, delay: 0.1 }}
-        className="pointer-events-none fixed inset-x-0 bottom-0 z-50 h-6 bg-black"
-      />
 
       <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-md flex-col px-5 py-10 sm:py-14">
         {/* Hero */}
