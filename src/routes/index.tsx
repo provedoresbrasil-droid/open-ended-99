@@ -90,14 +90,14 @@ function Index() {
   }, [px, py]);
 
   return (
-    <main className="relative min-h-screen overflow-hidden bg-black text-white antialiased">
+    <main className="relative min-h-screen overflow-hidden text-white antialiased">
       {/* Apple-style ambient background */}
-      <div className="pointer-events-none absolute inset-0 -z-10">
+      <div className="pointer-events-none absolute inset-0 z-0">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${bgNight.url})` }}
         />
-        <div className="absolute inset-0 bg-black/55" />
+        <div className="absolute inset-0 bg-black/35" />
         <motion.div
           aria-hidden
           style={{ x: glowX, y: glowY }}
@@ -142,7 +142,7 @@ function Index() {
         className="pointer-events-none fixed inset-x-0 bottom-0 z-50 h-6 bg-black"
       />
 
-      <div className="mx-auto flex min-h-screen w-full max-w-md flex-col px-5 py-10 sm:py-14">
+      <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-md flex-col px-5 py-10 sm:py-14">
         {/* Hero */}
         <motion.section
           variants={container}
