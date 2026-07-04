@@ -222,73 +222,26 @@ function Index() {
         >
           <motion.div variants={item}>
             <LinkCard
-              href={SITE_URL}
-              icon={<Globe className="h-5 w-5" />}
-              title="Acessar site oficial"
-              description="Conheça a empresa, soluções, serviços e projetos."
-              primary
-              theme="site"
+              href={YOUTUBE_MAIN}
+              icon={<Play className="h-5 w-5 fill-current" />}
+              title="RECPRO | Audiovisual"
+              description="Produção audiovisual, projetos e bastidores."
+              accent
+              theme="recpro"
             />
           </motion.div>
           <motion.div variants={item}>
             <LinkCard
-              href={YOUTUBE_MAIN}
-              icon={<Play className="h-5 w-5 fill-current" />}
-              title="Canal principal no YouTube"
-              description="Vídeos completos, conteúdos e novidades."
-              accent
-              theme="youtube"
+              href={YOUTUBE_VLOG}
+              icon={<Camera className="h-5 w-5" />}
+              title="Meu País Ceará · VLOG"
+              description="Rotina, viagens e o Ceará raiz por onde eu passo."
+              primary
+              theme="meupais"
             />
           </motion.div>
         </motion.section>
 
-        {/* YouTube channels */}
-        <section className="mt-8">
-          <div className="mb-3 flex items-center justify-between px-1">
-            <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-white/40">
-              Mais canais
-            </h2>
-            <span className="text-[10px] text-white/30">YouTube</span>
-          </div>
-          <motion.div
-            variants={container}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-50px" }}
-            className="space-y-3"
-          >
-            <motion.div variants={item}>
-              <LinkCard
-                href={YOUTUBE_CUTS}
-                icon={<Scissors className="h-5 w-5" />}
-                title="Cortes"
-                description="Os melhores momentos em vídeos curtos."
-                compact
-                theme="cuts"
-              />
-            </motion.div>
-            <motion.div variants={item}>
-              <LinkCard
-                href={YOUTUBE_PODCAST}
-                icon={<Mic className="h-5 w-5" />}
-                title="Podcast"
-                description="Episódios completos em áudio e vídeo."
-                compact
-                theme="podcast"
-              />
-            </motion.div>
-            <motion.div variants={item}>
-              <LinkCard
-                href={YOUTUBE_VLOG}
-                icon={<Camera className="h-5 w-5" />}
-                title="Vlogs & Bastidores"
-                description="Rotina, viagens e bastidores da marca."
-                compact
-                theme="vlog"
-              />
-            </motion.div>
-          </motion.div>
-        </section>
 
         {/* Trust */}
         <motion.section
