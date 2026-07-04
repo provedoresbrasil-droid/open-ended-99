@@ -51,7 +51,7 @@ const YOUTUBE_MAIN = "https://youtube.com/@exemplo";
 const YOUTUBE_CUTS = "https://youtube.com/@exemplo-cortes";
 const YOUTUBE_PODCAST = "https://youtube.com/@exemplo-podcast";
 const YOUTUBE_VLOG = "https://youtube.com/@exemplo-vlog";
-const INSTAGRAM_URL = "https://instagram.com/exemplo";
+const INSTAGRAM_URL = "https://instagram.com/rauleleutterio";
 const WHATSAPP_URL = "https://wa.me/5500000000000";
 const EMAIL_URL = "mailto:contato@exemplo.com";
 
