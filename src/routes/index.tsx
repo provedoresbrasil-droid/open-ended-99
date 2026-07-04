@@ -52,7 +52,7 @@ const YOUTUBE_CUTS = "https://youtube.com/@exemplo-cortes";
 const YOUTUBE_PODCAST = "https://youtube.com/@exemplo-podcast";
 const YOUTUBE_VLOG = "https://youtube.com/@exemplo-vlog";
 const INSTAGRAM_URL = "https://instagram.com/rauleleutterio";
-const WHATSAPP_URL = "https://wa.me/5500000000000";
+const WHATSAPP_URL = "https://api.whatsapp.com/send/?phone=5585989608620";
 const EMAIL_URL = "mailto:contato@exemplo.com";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
