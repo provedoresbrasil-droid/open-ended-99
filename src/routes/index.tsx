@@ -90,9 +90,9 @@ function Index() {
   }, [px, py]);
 
   return (
-    <main className="relative min-h-screen overflow-hidden bg-black text-white antialiased">
+    <main className="relative min-h-screen overflow-hidden text-white antialiased">
       {/* Apple-style ambient background */}
-      <div className="pointer-events-none absolute inset-0 -z-10">
+      <div className="pointer-events-none absolute inset-0 z-0">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${bgNight.url})` }}
