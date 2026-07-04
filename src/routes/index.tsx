@@ -93,7 +93,11 @@ function Index() {
     <main className="relative min-h-screen overflow-hidden bg-black text-white antialiased">
       {/* Apple-style ambient background */}
       <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-10%,#1c1c1e_0%,#000_60%)]" />
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(${bgNight.url})` }}
+        />
+        <div className="absolute inset-0 bg-black/55" />
         <motion.div
           aria-hidden
           style={{ x: glowX, y: glowY }}
