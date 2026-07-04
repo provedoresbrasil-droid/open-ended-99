@@ -34,10 +34,10 @@ const THEMES: Record<
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Link na Bio — Central Premium" },
-      { name: "description", content: "Conteúdos, projetos e soluções reunidos em um só lugar." },
-      { property: "og:title", content: "Link na Bio — Central Premium" },
-      { property: "og:description", content: "Conteúdos, projetos e soluções reunidos em um só lugar." },
+      { title: "Raul Eleutério | Central Premium" },
+      { name: "description", content: "Soluções, conteúdos e projetos reunidos em um só lugar." },
+      { property: "og:title", content: "Raul Eleutério | Central Premium" },
+      { property: "og:description", content: "Soluções, conteúdos e projetos reunidos em um só lugar." },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/" },
     ],
@@ -185,14 +185,17 @@ function Index() {
               transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
               className="bg-gradient-to-r from-white via-white/40 to-white bg-[length:200%_100%] bg-clip-text text-transparent"
             >
-              Sua Marca
+              Raul Eleutério
             </motion.span>
           </motion.h1>
           <motion.p variants={item} className="mt-1 text-sm font-medium text-white/50">
-            @suamarca
+            @rauleleutterio
           </motion.p>
           <motion.p variants={item} className="mt-4 text-balance text-base leading-relaxed text-white/70">
-            Conteúdos, projetos e soluções reunidos em um só lugar.
+            🌵 | Obstinado.
+          </motion.p>
+          <motion.p variants={item} className="mt-2 text-balance text-sm leading-relaxed text-white/50">
+            Soluções, conteúdos e projetos reunidos em um só lugar.
           </motion.p>
         </motion.section>
 
@@ -208,7 +211,7 @@ function Index() {
               href={WHATSAPP_URL}
               icon={<MessageCircle className="h-5 w-5 fill-current" />}
               title="RECPRO | Audiovisual"
-              description="Fale com a produtora pelo WhatsApp."
+              description={"Fale com a produtora pelo WhatsApp.\nEstamos prontos!"}
               primary
               theme="recpro"
             />
@@ -217,7 +220,7 @@ function Index() {
             <LinkCard
               href={YOUTUBE_VLOG}
               icon={<Youtube className="h-5 w-5" />}
-              title="Meu País Ceará · VLOG"
+              title="MEU PAÍS CEARÁ | Playlist"
               description="Rotina, viagens e o Ceará raiz por onde eu passo."
               accent
               theme="meupais"
@@ -262,7 +265,7 @@ function Index() {
         </motion.section>
 
         <footer className="mt-auto pt-10 text-center text-xs text-white/30">
-          © {new Date().getFullYear()} Sua Marca. Todos os direitos reservados.
+          © {new Date().getFullYear()} Raul Eleutério. Todos os direitos reservados.
         </footer>
       </div>
     </main>
@@ -387,7 +390,7 @@ function LinkCard({
               </span>
             )}
           </span>
-          <span className={`mt-0.5 block text-white/55 line-clamp-1 ${compact ? "text-xs" : "text-sm"}`}>
+          <span className={`mt-0.5 block text-white/55 whitespace-pre-line ${compact ? "text-xs" : "text-sm"}`}>
             {description}
           </span>
         </span>
