@@ -97,7 +97,7 @@ function Index() {
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${bgNight.url})` }}
         />
-        <div className="absolute inset-0 bg-black/55" />
+        <div className="absolute inset-0 bg-black/35" />
         <motion.div
           aria-hidden
           style={{ x: glowX, y: glowY }}
