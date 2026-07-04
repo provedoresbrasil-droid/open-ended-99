@@ -194,10 +194,6 @@ function Index() {
           <motion.p variants={item} className="mt-4 text-balance text-base leading-relaxed text-white/70">
             Conteúdos, projetos e soluções reunidos em um só lugar.
           </motion.p>
-              <ShieldCheck className="h-3.5 w-3.5 text-emerald-400" />
-            </motion.span>
-            Marca verificada · +5 anos no mercado
-          </motion.div>
         </motion.section>
 
         {/* Primary */}
