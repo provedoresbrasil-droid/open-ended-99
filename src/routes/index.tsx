@@ -34,10 +34,10 @@ const THEMES: Record<
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Link na Bio — Central Premium" },
-      { name: "description", content: "Conteúdos, projetos e soluções reunidos em um só lugar." },
-      { property: "og:title", content: "Link na Bio — Central Premium" },
-      { property: "og:description", content: "Conteúdos, projetos e soluções reunidos em um só lugar." },
+      { title: "Raul Eleutério | Central Premium" },
+      { name: "description", content: "Soluções, conteúdos e projetos reunidos em um só lugar." },
+      { property: "og:title", content: "Raul Eleutério | Central Premium" },
+      { property: "og:description", content: "Soluções, conteúdos e projetos reunidos em um só lugar." },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/" },
     ],
