@@ -12,6 +12,7 @@ import {
 import { useEffect, useRef, useState } from "react";
 import { ArrowUpRight, Instagram, MessageCircle, Mail, ShieldCheck, Youtube } from "lucide-react";
 import profilePhoto from "@/assets/profile.png.asset.json";
+import bgNight from "@/assets/bg-night.png.asset.json";
 
 type CardTheme = "recpro" | "meupais";
 
