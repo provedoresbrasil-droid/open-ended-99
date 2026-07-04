@@ -189,7 +189,7 @@ function Index() {
             </motion.span>
           </motion.h1>
           <motion.p variants={item} className="mt-1 text-sm font-medium text-white/50">
-            @suamarca
+            @rauleleutterio
           </motion.p>
           <motion.p variants={item} className="mt-4 text-balance text-base leading-relaxed text-white/70">
             Conteúdos, projetos e soluções reunidos em um só lugar.
