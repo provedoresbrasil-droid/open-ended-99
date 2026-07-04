@@ -11,48 +11,27 @@ import {
 } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { Globe, Play, ArrowUpRight, Instagram, MessageCircle, Mail, ShieldCheck, Scissors, Mic, Camera } from "lucide-react";
-import bgSite from "@/assets/bg-site.jpg";
-import bgYoutube from "@/assets/bg-youtube.jpg";
-import bgCuts from "@/assets/bg-cuts.jpg";
-import bgPodcast from "@/assets/bg-podcast.jpg";
-import bgVlog from "@/assets/bg-vlog.jpg";
+import recproLogo from "@/assets/recpro.jpg.asset.json";
+import meupaisLogo from "@/assets/meupais.jpg.asset.json";
 import profilePhoto from "@/assets/profile.png.asset.json";
 
-type CardTheme = "site" | "youtube" | "cuts" | "podcast" | "vlog";
+type CardTheme = "recpro" | "meupais";
 
 const THEMES: Record<
   CardTheme,
   { image: string; gradient: string; glow: string; accentRing: string }
 > = {
-  site: {
-    image: bgSite,
-    gradient: "from-sky-500/30 via-indigo-600/20 to-transparent",
-    glow: "bg-sky-500/30",
-    accentRing: "ring-sky-400/30",
-  },
-  youtube: {
-    image: bgYoutube,
+  recpro: {
+    image: recproLogo.url,
     gradient: "from-red-600/40 via-rose-700/25 to-transparent",
     glow: "bg-red-500/40",
     accentRing: "ring-red-400/30",
   },
-  cuts: {
-    image: bgCuts,
-    gradient: "from-orange-500/35 via-amber-500/20 to-transparent",
-    glow: "bg-orange-500/35",
+  meupais: {
+    image: meupaisLogo.url,
+    gradient: "from-orange-600/45 via-amber-600/25 to-transparent",
+    glow: "bg-orange-500/45",
     accentRing: "ring-orange-400/30",
-  },
-  podcast: {
-    image: bgPodcast,
-    gradient: "from-violet-600/35 via-fuchsia-600/20 to-transparent",
-    glow: "bg-violet-500/35",
-    accentRing: "ring-violet-400/30",
-  },
-  vlog: {
-    image: bgVlog,
-    gradient: "from-teal-500/35 via-cyan-600/20 to-transparent",
-    glow: "bg-cyan-500/35",
-    accentRing: "ring-cyan-400/30",
   },
 };
 
@@ -243,73 +222,26 @@ function Index() {
         >
           <motion.div variants={item}>
             <LinkCard
-              href={SITE_URL}
-              icon={<Globe className="h-5 w-5" />}
-              title="Acessar site oficial"
-              description="Conheça a empresa, soluções, serviços e projetos."
-              primary
-              theme="site"
+              href={YOUTUBE_MAIN}
+              icon={<Play className="h-5 w-5 fill-current" />}
+              title="RECPRO | Audiovisual"
+              description="Produção audiovisual, projetos e bastidores."
+              accent
+              theme="recpro"
             />
           </motion.div>
           <motion.div variants={item}>
             <LinkCard
-              href={YOUTUBE_MAIN}
-              icon={<Play className="h-5 w-5 fill-current" />}
-              title="Canal principal no YouTube"
-              description="Vídeos completos, conteúdos e novidades."
-              accent
-              theme="youtube"
+              href={YOUTUBE_VLOG}
+              icon={<Camera className="h-5 w-5" />}
+              title="Meu País Ceará · VLOG"
+              description="Rotina, viagens e o Ceará raiz por onde eu passo."
+              primary
+              theme="meupais"
             />
           </motion.div>
         </motion.section>
 
-        {/* YouTube channels */}
-        <section className="mt-8">
-          <div className="mb-3 flex items-center justify-between px-1">
-            <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-white/40">
-              Mais canais
-            </h2>
-            <span className="text-[10px] text-white/30">YouTube</span>
-          </div>
-          <motion.div
-            variants={container}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-50px" }}
-            className="space-y-3"
-          >
-            <motion.div variants={item}>
-              <LinkCard
-                href={YOUTUBE_CUTS}
-                icon={<Scissors className="h-5 w-5" />}
-                title="Cortes"
-                description="Os melhores momentos em vídeos curtos."
-                compact
-                theme="cuts"
-              />
-            </motion.div>
-            <motion.div variants={item}>
-              <LinkCard
-                href={YOUTUBE_PODCAST}
-                icon={<Mic className="h-5 w-5" />}
-                title="Podcast"
-                description="Episódios completos em áudio e vídeo."
-                compact
-                theme="podcast"
-              />
-            </motion.div>
-            <motion.div variants={item}>
-              <LinkCard
-                href={YOUTUBE_VLOG}
-                icon={<Camera className="h-5 w-5" />}
-                title="Vlogs & Bastidores"
-                description="Rotina, viagens e bastidores da marca."
-                compact
-                theme="vlog"
-              />
-            </motion.div>
-          </motion.div>
-        </section>
 
         {/* Trust */}
         <motion.section
