@@ -16,6 +16,7 @@ import bgYoutube from "@/assets/bg-youtube.jpg";
 import bgCuts from "@/assets/bg-cuts.jpg";
 import bgPodcast from "@/assets/bg-podcast.jpg";
 import bgVlog from "@/assets/bg-vlog.jpg";
+import profilePhoto from "@/assets/profile.png.asset.json";
 
 type CardTheme = "site" | "youtube" | "cuts" | "podcast" | "vlog";
 
