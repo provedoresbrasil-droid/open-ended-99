@@ -98,6 +98,20 @@ function Index() {
           style={{ backgroundImage: `url(${bgNight.url})` }}
         />
         <div className="absolute inset-0 bg-black/40" />
+        {/* Meteorito discreto */}
+        <motion.div
+          aria-hidden
+          initial={{ x: "10vw", y: "-10vh", opacity: 0 }}
+          animate={{ x: "-90vw", y: "70vh", opacity: [0, 0.7, 0.7, 0] }}
+          transition={{
+            duration: 4,
+            ease: "easeInOut",
+            times: [0, 0.15, 0.85, 1],
+            repeat: Infinity,
+            repeatDelay: 8,
+          }}
+          className="absolute right-0 top-0 h-[2px] w-32 -rotate-[25deg] rounded-full bg-gradient-to-l from-white via-white/60 to-transparent shadow-[0_0_6px_1px_rgba(255,255,255,0.4)]"
+        />
       </div>
 
 
