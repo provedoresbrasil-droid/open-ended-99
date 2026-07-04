@@ -390,7 +390,7 @@ function LinkCard({
               </span>
             )}
           </span>
-          <span className={`mt-0.5 block text-white/55 line-clamp-1 ${compact ? "text-xs" : "text-sm"}`}>
+          <span className={`mt-0.5 block text-white/55 whitespace-pre-line ${compact ? "text-xs" : "text-sm"}`}>
             {description}
           </span>
         </span>
