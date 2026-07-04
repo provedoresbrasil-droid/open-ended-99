@@ -193,9 +193,6 @@ function Index() {
               @rauleleutterio
             </a>
           </motion.p>
-          <motion.p variants={item} className="mt-4 text-balance text-base leading-relaxed text-white/70">
-            🌵 | Obstinado.
-          </motion.p>
           <motion.p variants={item} className="mt-2 text-balance text-sm leading-relaxed text-white/50">
             Soluções, conteúdos e projetos reunidos em um só lugar.
           </motion.p>
