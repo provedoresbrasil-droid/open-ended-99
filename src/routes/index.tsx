@@ -229,18 +229,6 @@ function Index() {
         </motion.section>
 
 
-        {/* Trust */}
-        <motion.section
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, ease: EASE }}
-          className="mt-10 grid grid-cols-3 gap-3 rounded-2xl border border-white/10 bg-white/[0.03] p-4 backdrop-blur-xl"
-        >
-          <Stat to={100} prefix="+" label="Projetos" />
-          <Stat to={1} prefix="+" suffix="M" label="Views" />
-          <Stat to={50} prefix="+" label="Clientes" />
-        </motion.section>
 
         {/* Final CTA */}
         <motion.section
