@@ -15,41 +15,23 @@ import recproLogo from "@/assets/recpro.jpg.asset.json";
 import meupaisLogo from "@/assets/meupais.jpg.asset.json";
 import profilePhoto from "@/assets/profile.png.asset.json";
 
-type CardTheme = "site" | "youtube" | "cuts" | "podcast" | "vlog";
+type CardTheme = "recpro" | "meupais";
 
 const THEMES: Record<
   CardTheme,
   { image: string; gradient: string; glow: string; accentRing: string }
 > = {
-  site: {
-    image: bgSite,
-    gradient: "from-sky-500/30 via-indigo-600/20 to-transparent",
-    glow: "bg-sky-500/30",
-    accentRing: "ring-sky-400/30",
-  },
-  youtube: {
-    image: bgYoutube,
+  recpro: {
+    image: recproLogo.url,
     gradient: "from-red-600/40 via-rose-700/25 to-transparent",
     glow: "bg-red-500/40",
     accentRing: "ring-red-400/30",
   },
-  cuts: {
-    image: bgCuts,
-    gradient: "from-orange-500/35 via-amber-500/20 to-transparent",
-    glow: "bg-orange-500/35",
+  meupais: {
+    image: meupaisLogo.url,
+    gradient: "from-orange-600/45 via-amber-600/25 to-transparent",
+    glow: "bg-orange-500/45",
     accentRing: "ring-orange-400/30",
-  },
-  podcast: {
-    image: bgPodcast,
-    gradient: "from-violet-600/35 via-fuchsia-600/20 to-transparent",
-    glow: "bg-violet-500/35",
-    accentRing: "ring-violet-400/30",
-  },
-  vlog: {
-    image: bgVlog,
-    gradient: "from-teal-500/35 via-cyan-600/20 to-transparent",
-    glow: "bg-cyan-500/35",
-    accentRing: "ring-cyan-400/30",
   },
 };
 
