@@ -97,20 +97,6 @@ function Index() {
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${bgNight.url})` }}
         />
-        {/* Meteoro discreto */}
-        <motion.div
-          aria-hidden
-          initial={{ opacity: 0, x: "-10vw", y: "-10vh" }}
-          animate={{ opacity: [0, 0.9, 0], x: "80vw", y: "60vh" }}
-          transition={{
-            duration: 1.6,
-            ease: "easeIn",
-            repeat: Infinity,
-            repeatDelay: 7,
-            delay: 3,
-          }}
-          className="absolute left-0 top-0 h-[2px] w-40 rotate-[35deg] rounded-full bg-gradient-to-r from-transparent via-white/70 to-white shadow-[0_0_8px_2px_rgba(255,255,255,0.5)]"
-        />
       </div>
 
       {/* Cinematic letterbox */}
