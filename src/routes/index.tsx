@@ -11,24 +11,20 @@ import {
 } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { ArrowUpRight, Instagram, MessageCircle, Mail, ShieldCheck, Youtube } from "lucide-react";
-import recproLogo from "@/assets/recpro.jpg.asset.json";
-import meupaisLogo from "@/assets/meupais.jpg.asset.json";
 import profilePhoto from "@/assets/profile.png.asset.json";
 
 type CardTheme = "recpro" | "meupais";
 
 const THEMES: Record<
   CardTheme,
-  { image: string; gradient: string; glow: string; accentRing: string }
+  { gradient: string; glow: string; accentRing: string }
 > = {
   recpro: {
-    image: recproLogo.url,
     gradient: "from-red-600/40 via-rose-700/25 to-transparent",
     glow: "bg-red-500/40",
     accentRing: "ring-red-400/30",
   },
   meupais: {
-    image: meupaisLogo.url,
     gradient: "from-orange-600/45 via-amber-600/25 to-transparent",
     glow: "bg-orange-500/45",
     accentRing: "ring-orange-400/30",
