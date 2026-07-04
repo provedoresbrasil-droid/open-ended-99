@@ -105,7 +105,7 @@ function Index() {
           animate={{ x: "-110vw", y: "30vh", opacity: [0, 0.85, 0.85, 0] }}
           transition={{
             duration: 3.2,
-            ease: "easeInOut",
+            ease: "linear",
             times: [0, 0.15, 0.85, 1],
             repeat: Infinity,
             repeatDelay: 7,
