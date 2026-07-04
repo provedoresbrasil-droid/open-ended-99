@@ -10,7 +10,7 @@ import {
   type MotionValue,
 } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import { Globe, Play, ArrowUpRight, Instagram, MessageCircle, Mail, ShieldCheck, Scissors, Mic, Camera } from "lucide-react";
+import { ArrowUpRight, Instagram, MessageCircle, Mail, ShieldCheck, Youtube } from "lucide-react";
 import recproLogo from "@/assets/recpro.jpg.asset.json";
 import meupaisLogo from "@/assets/meupais.jpg.asset.json";
 import profilePhoto from "@/assets/profile.png.asset.json";
