@@ -265,7 +265,7 @@ function Index() {
         </motion.section>
 
         <footer className="mt-auto pt-10 text-center text-xs text-white/30">
-          © {new Date().getFullYear()} Sua Marca. Todos os direitos reservados.
+          © {new Date().getFullYear()} Raul Eleutério. Todos os direitos reservados.
         </footer>
       </div>
     </main>
