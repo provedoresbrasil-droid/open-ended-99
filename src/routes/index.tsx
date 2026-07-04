@@ -54,7 +54,7 @@ const YOUTUBE_PODCAST = "https://youtube.com/@exemplo-podcast";
 const YOUTUBE_VLOG = "https://youtube.com/@exemplo-vlog";
 const INSTAGRAM_URL = "https://instagram.com/rauleleutterio";
 const WHATSAPP_URL = "https://api.whatsapp.com/send/?phone=5585989608620";
-const EMAIL_URL = "mailto:contato@exemplo.com";
+const EMAIL_URL = "mailto:rauleleutterio@gmail.com";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 const container: Variants = {
