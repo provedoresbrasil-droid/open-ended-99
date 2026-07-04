@@ -111,6 +111,20 @@ function Index() {
           }}
           className="absolute right-0 top-[2vh] h-[1.5px] w-28 -rotate-[8deg] rounded-full bg-gradient-to-r from-white via-white/70 to-transparent opacity-40 shadow-[0_0_6px_1px_rgba(255,255,255,0.45)]"
         />
+        {/* Segundo meteorito */}
+        <motion.div
+          aria-hidden
+          initial={{ x: "30vw", y: "0vh" }}
+          animate={{ x: "-140vw", y: "15vh" }}
+          transition={{
+            duration: 5,
+            ease: "linear",
+            repeat: Infinity,
+            repeatDelay: 6,
+            delay: 3,
+          }}
+          className="absolute right-0 top-[22vh] h-[1.5px] w-24 -rotate-[10deg] rounded-full bg-gradient-to-r from-white via-white/70 to-transparent opacity-40 shadow-[0_0_6px_1px_rgba(255,255,255,0.45)]"
+        />
       </div>
 
 
