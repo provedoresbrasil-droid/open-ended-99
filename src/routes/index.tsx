@@ -191,11 +191,13 @@ function Index() {
             <motion.div
               whileHover={{ scale: 1.05, rotate: -3 }}
               transition={{ type: "spring", stiffness: 300, damping: 18 }}
-              className="relative grid h-24 w-24 place-items-center rounded-full bg-gradient-to-br from-zinc-800 to-black ring-1 ring-white/10"
+              className="relative grid h-24 w-24 place-items-center overflow-hidden rounded-full bg-gradient-to-br from-zinc-800 to-black ring-1 ring-white/10"
             >
-              <span className="bg-gradient-to-b from-white to-white/60 bg-clip-text text-2xl font-semibold tracking-tight text-transparent">
-                M
-              </span>
+              <img
+                src={profilePhoto.url}
+                alt="Foto de perfil"
+                className="h-full w-full object-cover"
+              />
             </motion.div>
           </motion.div>
 
