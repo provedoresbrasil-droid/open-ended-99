@@ -97,6 +97,7 @@ function Index() {
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${bgNight.url})` }}
         />
+        <div className="absolute inset-0 bg-black/40" />
       </div>
 
 
