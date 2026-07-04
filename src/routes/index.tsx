@@ -211,7 +211,7 @@ function Index() {
               href={WHATSAPP_URL}
               icon={<MessageCircle className="h-5 w-5 fill-current" />}
               title="RECPRO | Audiovisual"
-              description="Fale com a produtora pelo WhatsApp."
+              description={"Fale com a produtora pelo WhatsApp.\nEstamos prontos!"}
               primary
               theme="recpro"
             />
