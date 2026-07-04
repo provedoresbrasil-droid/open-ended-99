@@ -185,7 +185,7 @@ function Index() {
               transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
               className="bg-gradient-to-r from-white via-white/40 to-white bg-[length:200%_100%] bg-clip-text text-transparent"
             >
-              Sua Marca
+              Raul Eleutério
             </motion.span>
           </motion.h1>
           <motion.p variants={item} className="mt-1 text-sm font-medium text-white/50">
