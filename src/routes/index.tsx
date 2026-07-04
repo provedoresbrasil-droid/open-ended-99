@@ -11,11 +11,8 @@ import {
 } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { Globe, Play, ArrowUpRight, Instagram, MessageCircle, Mail, ShieldCheck, Scissors, Mic, Camera } from "lucide-react";
-import bgSite from "@/assets/bg-site.jpg";
-import bgYoutube from "@/assets/bg-youtube.jpg";
-import bgCuts from "@/assets/bg-cuts.jpg";
-import bgPodcast from "@/assets/bg-podcast.jpg";
-import bgVlog from "@/assets/bg-vlog.jpg";
+import recproLogo from "@/assets/recpro.jpg.asset.json";
+import meupaisLogo from "@/assets/meupais.jpg.asset.json";
 import profilePhoto from "@/assets/profile.png.asset.json";
 
 type CardTheme = "site" | "youtube" | "cuts" | "podcast" | "vlog";
