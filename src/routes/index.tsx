@@ -349,23 +349,9 @@ function LinkCard({
       style={{ rotateX: rx, rotateY: ry, transformPerspective: 900 }}
       className={`group relative block overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.06] to-white/[0.02] backdrop-blur-xl shadow-[0_1px_0_0_rgba(255,255,255,0.06)_inset,0_20px_60px_-20px_rgba(0,0,0,0.8)] transition-colors hover:border-white/20 will-change-transform ${t?.accentRing ?? ""}`}
     >
-      {/* Themed background */}
+      {/* Themed background (color-only, inspired by logo colors) */}
       {t && (
         <>
-          {/* Themed photo background */}
-          <motion.img
-            src={t.image}
-            alt=""
-            aria-hidden
-            loading="lazy"
-            width={1024}
-            height={512}
-            initial={{ scale: 1.05 }}
-            whileHover={{ scale: 1.12 }}
-            transition={{ duration: 1.2, ease: EASE }}
-            className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-40 mix-blend-luminosity transition-opacity duration-500 group-hover:opacity-60"
-          />
-          {/* Color wash */}
           <span
             aria-hidden
             className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${t.gradient} opacity-70 mix-blend-overlay`}
@@ -375,11 +361,6 @@ function LinkCard({
             animate={{ scale: [1, 1.15, 1], opacity: [0.5, 0.8, 0.5] }}
             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
             className={`pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full blur-3xl ${t.glow}`}
-          />
-          {/* Readability scrim */}
-          <span
-            aria-hidden
-            className="pointer-events-none absolute inset-0 bg-gradient-to-r from-black/85 via-black/55 to-black/30"
           />
         </>
       )}
