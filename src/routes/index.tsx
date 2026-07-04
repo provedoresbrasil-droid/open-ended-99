@@ -220,7 +220,7 @@ function Index() {
             <LinkCard
               href={YOUTUBE_VLOG}
               icon={<Youtube className="h-5 w-5" />}
-              title="Meu País Ceará · VLOG"
+              title="MEU PAÍS CEARÁ | Playlist"
               description="Rotina, viagens e o Ceará raiz por onde eu passo."
               accent
               theme="meupais"
