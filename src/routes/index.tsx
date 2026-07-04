@@ -189,7 +189,9 @@ function Index() {
             </motion.span>
           </motion.h1>
           <motion.p variants={item} className="mt-1 text-sm font-medium text-white/50">
-            @rauleleutterio
+            <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-white">
+              @rauleleutterio
+            </a>
           </motion.p>
           <motion.p variants={item} className="mt-4 text-balance text-base leading-relaxed text-white/70">
             🌵 | Obstinado.
