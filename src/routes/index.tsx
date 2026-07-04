@@ -110,7 +110,7 @@ function Index() {
             repeat: Infinity,
             repeatDelay: 9,
           }}
-          className="absolute right-[8vw] top-[10vh] h-[1.5px] w-24 -rotate-[24deg] rounded-full bg-gradient-to-l from-white via-white/70 to-transparent shadow-[0_0_6px_1px_rgba(255,255,255,0.45)]"
+          className="absolute right-[8vw] top-[10vh] h-[1.5px] w-24 -rotate-[24deg] rounded-full bg-gradient-to-r from-white via-white/70 to-transparent shadow-[0_0_6px_1px_rgba(255,255,255,0.45)]"
         />
       </div>
 
