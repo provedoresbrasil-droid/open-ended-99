@@ -101,16 +101,15 @@ function Index() {
         {/* Meteorito discreto no céu */}
         <motion.div
           aria-hidden
-          initial={{ x: "0vw", y: "0vh", opacity: 0 }}
-          animate={{ x: "-110vw", y: "30vh", opacity: [0, 0.85, 0.85, 0] }}
+          initial={{ x: "0vw", y: "0vh" }}
+          animate={{ x: "-110vw", y: "30vh" }}
           transition={{
             duration: 3.2,
             ease: "linear",
-            times: [0, 0.15, 0.85, 1],
             repeat: Infinity,
             repeatDelay: 7,
           }}
-          className="absolute right-[-10vw] top-[8vh] h-[1.5px] w-28 -rotate-[18deg] rounded-full bg-gradient-to-r from-white via-white/70 to-transparent shadow-[0_0_6px_1px_rgba(255,255,255,0.45)]"
+          className="absolute right-[-10vw] top-[2vh] h-[1.5px] w-28 -rotate-[18deg] rounded-full bg-gradient-to-r from-white via-white/70 to-transparent shadow-[0_0_6px_1px_rgba(255,255,255,0.45)]"
         />
       </div>
 
