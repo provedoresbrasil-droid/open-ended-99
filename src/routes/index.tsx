@@ -10,7 +10,7 @@ import {
   type MotionValue,
 } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import { Globe, Play, ArrowUpRight, Instagram, MessageCircle, Mail, ShieldCheck, Scissors, Mic, Camera } from "lucide-react";
+import { ArrowUpRight, Instagram, MessageCircle, Mail, ShieldCheck, Youtube } from "lucide-react";
 import recproLogo from "@/assets/recpro.jpg.asset.json";
 import meupaisLogo from "@/assets/meupais.jpg.asset.json";
 import profilePhoto from "@/assets/profile.png.asset.json";
@@ -222,21 +222,21 @@ function Index() {
         >
           <motion.div variants={item}>
             <LinkCard
-              href={YOUTUBE_MAIN}
-              icon={<Play className="h-5 w-5 fill-current" />}
+              href={WHATSAPP_URL}
+              icon={<MessageCircle className="h-5 w-5 fill-current" />}
               title="RECPRO | Audiovisual"
-              description="Produção audiovisual, projetos e bastidores."
-              accent
+              description="Fale com a produtora pelo WhatsApp."
+              primary
               theme="recpro"
             />
           </motion.div>
           <motion.div variants={item}>
             <LinkCard
               href={YOUTUBE_VLOG}
-              icon={<Camera className="h-5 w-5" />}
+              icon={<Youtube className="h-5 w-5" />}
               title="Meu País Ceará · VLOG"
               description="Rotina, viagens e o Ceará raiz por onde eu passo."
-              primary
+              accent
               theme="meupais"
             />
           </motion.div>
