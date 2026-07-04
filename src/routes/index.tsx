@@ -51,7 +51,7 @@ const YOUTUBE_MAIN = "https://youtube.com/@exemplo";
 const YOUTUBE_CUTS = "https://youtube.com/@exemplo-cortes";
 const YOUTUBE_PODCAST = "https://youtube.com/@exemplo-podcast";
 const YOUTUBE_VLOG = "https://youtube.com/@exemplo-vlog";
-const INSTAGRAM_URL = "https://instagram.com/exemplo";
+const INSTAGRAM_URL = "https://instagram.com/rauleleutterio";
 const WHATSAPP_URL = "https://wa.me/5500000000000";
 const EMAIL_URL = "mailto:contato@exemplo.com";
 
@@ -189,7 +189,9 @@ function Index() {
             </motion.span>
           </motion.h1>
           <motion.p variants={item} className="mt-1 text-sm font-medium text-white/50">
-            @rauleleutterio
+            <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-white">
+              @rauleleutterio
+            </a>
           </motion.p>
           <motion.p variants={item} className="mt-4 text-balance text-base leading-relaxed text-white/70">
             🌵 | Obstinado.
