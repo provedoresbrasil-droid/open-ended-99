@@ -194,19 +194,6 @@ function Index() {
           <motion.p variants={item} className="mt-4 text-balance text-base leading-relaxed text-white/70">
             Conteúdos, projetos e soluções reunidos em um só lugar.
           </motion.p>
-          <motion.div
-            variants={item}
-            whileHover={{ scale: 1.04 }}
-            className="mt-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-xs font-medium text-white/70 backdrop-blur-xl"
-          >
-            <motion.span
-              animate={{ scale: [1, 1.25, 1], opacity: [1, 0.6, 1] }}
-              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            >
-              <ShieldCheck className="h-3.5 w-3.5 text-emerald-400" />
-            </motion.span>
-            Marca verificada · +5 anos no mercado
-          </motion.div>
         </motion.section>
 
         {/* Primary */}
