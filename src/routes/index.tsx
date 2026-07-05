@@ -98,6 +98,8 @@ function Index() {
           style={{ backgroundImage: `url(${bgNight.url})` }}
         />
         <div className="absolute inset-0 bg-black/40" />
+        {/* Estrelas cintilantes */}
+        <Stars count={60} />
         {/* Meteorito discreto no céu */}
         <motion.div
           aria-hidden
@@ -470,5 +472,37 @@ function SocialIcon({
     >
       {children}
     </motion.a>
+  );
+}
+
+function Stars({ count = 60 }: { count?: number }) {
+  const stars = useRef(
+    Array.from({ length: count }, () => ({
+      top: Math.random() * 100,
+      left: Math.random() * 100,
+      size: Math.random() * 1.5 + 0.5,
+      delay: Math.random() * 4,
+      duration: Math.random() * 2 + 2,
+      baseOpacity: Math.random() * 0.4 + 0.3,
+    })),
+  ).current;
+  return (
+    <>
+      {stars.map((s, i) => (
+        <motion.span
+          key={i}
+          aria-hidden
+          className="absolute rounded-full bg-white"
+          style={{
+            top: `${s.top}%`,
+            left: `${s.left}%`,
+            width: s.size,
+            height: s.size,
+          }}
+          animate={{ opacity: [s.baseOpacity, 1, s.baseOpacity], scale: [1, 1.4, 1] }}
+          transition={{ duration: s.duration, delay: s.delay, repeat: Infinity, ease: "easeInOut" }}
+        />
+      ))}
+    </>
   );
 }
