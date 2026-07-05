@@ -98,8 +98,6 @@ function Index() {
           style={{ backgroundImage: `url(${bgNight.url})` }}
         />
         <div className="absolute inset-0 bg-black/40" />
-        {/* Estrelas cintilantes */}
-        <Stars count={60} />
         {/* Meteorito discreto no céu */}
         <motion.div
           aria-hidden
