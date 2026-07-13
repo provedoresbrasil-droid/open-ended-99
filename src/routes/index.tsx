@@ -226,7 +226,7 @@ function Index() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="mt-10 text-center"
+          className="mt-10 w-full text-center"
         >
           <p className="text-sm text-white/50">Escolha uma opção acima e continue a experiência.</p>
           <div className="mt-5 flex items-center justify-center gap-3">
