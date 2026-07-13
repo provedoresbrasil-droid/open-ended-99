@@ -242,7 +242,7 @@ function Index() {
           </div>
         </motion.section>
 
-        <footer className="mt-auto pt-10 text-center text-xs text-white/30">
+        <footer className="mt-auto w-full pt-10 text-center text-xs text-white/30">
           © {new Date().getFullYear()} Raul Eleutério. Todos os direitos reservados.
         </footer>
       </div>
