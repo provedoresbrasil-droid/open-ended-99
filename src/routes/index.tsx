@@ -13,7 +13,8 @@ import {
 import { useEffect, useRef, useState } from "react";
 import { ArrowUpRight, Instagram, MessageCircle, Mail, ShieldCheck, Youtube } from "lucide-react";
 import profilePhoto from "@/assets/profile.png.asset.json";
-import bgNight from "@/assets/bg-night.png.asset.json";
+import bgNight from "@/assets/bg-night-clean.jpg.asset.json";
+import starsLayer from "@/assets/stars-layer.png.asset.json";
 
 type CardTheme = "recpro" | "meupais";
 
@@ -98,6 +99,15 @@ function Index() {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${bgNight.url})` }}
+        />
+        {/* Camada de estrelas cintilantes */}
+        <div
+          className="absolute inset-0 bg-cover bg-center animate-[twinkle_3s_ease-in-out_infinite]"
+          style={{ backgroundImage: `url(${starsLayer.url})` }}
+        />
+        <div
+          className="absolute inset-0 bg-cover bg-center mix-blend-screen animate-[twinkle_4.2s_ease-in-out_infinite_-1.5s]"
+          style={{ backgroundImage: `url(${starsLayer.url})` }}
         />
         <div className="absolute inset-0 bg-black/40" />
         {/* Meteorito discreto no céu */}

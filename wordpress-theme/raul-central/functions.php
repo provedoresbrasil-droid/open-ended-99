@@ -19,9 +19,10 @@ function raul_central_assets() {
         '1.0.0'
     );
 
-    // Passa a URL da imagem de fundo para o CSS via variável CSS
-    $bg_url = get_theme_file_uri( 'assets/bg-night.jpg' );
-    $inline = ":root{--bg-night:url('" . esc_url( $bg_url ) . "');}";
+    // Passa as URLs das camadas de fundo para o CSS via variáveis CSS
+    $bg_url    = get_theme_file_uri( 'assets/bg-night-clean.jpg' );
+    $stars_url = get_theme_file_uri( 'assets/stars-layer.png' );
+    $inline = ":root{--bg-night:url('" . esc_url( $bg_url ) . "');--stars-layer:url('" . esc_url( $stars_url ) . "');}";
     wp_add_inline_style( 'raul-central-style', $inline );
 }
 add_action( 'wp_enqueue_scripts', 'raul_central_assets' );

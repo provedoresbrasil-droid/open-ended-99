@@ -16,6 +16,8 @@ $youtube_vlog = 'https://youtube.com/@exemplo-vlog';
     <!-- Fundo -->
     <div class="bg-wrap">
         <div class="bg-image"></div>
+        <div class="stars stars-a" aria-hidden="true"></div>
+        <div class="stars stars-b" aria-hidden="true"></div>
         <div class="bg-overlay"></div>
         <div class="meteor meteor-1" aria-hidden="true"></div>
         <div class="meteor meteor-2" aria-hidden="true"></div>
