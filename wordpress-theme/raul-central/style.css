@@ -30,6 +30,19 @@ img{max-width:100%;display:block}
   background-size:cover;background-position:center;
   background-image:var(--bg-night, none);
 }
+.stars{
+  position:absolute;inset:0;
+  background-size:cover;background-position:center;
+  background-image:var(--stars-layer, none);
+  pointer-events:none;
+  will-change:opacity, filter;
+}
+.stars-a{animation:twinkle 3s ease-in-out infinite}
+.stars-b{animation:twinkle 4.2s ease-in-out infinite;animation-delay:-1.5s;mix-blend-mode:screen}
+@keyframes twinkle{
+  0%,100%{opacity:1;filter:brightness(1)}
+  50%{opacity:.45;filter:brightness(1.5)}
+}
 .bg-overlay{position:absolute;inset:0;background:rgba(0,0,0,.4)}
 
 /* ===== Meteoros ===== */
