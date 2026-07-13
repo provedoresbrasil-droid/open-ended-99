@@ -198,7 +198,7 @@ function Index() {
           variants={container}
           initial="hidden"
           animate="show"
-          className="mt-10 space-y-3"
+          className="mt-10 w-full space-y-3"
         >
           <motion.div variants={item}>
             <LinkCard
