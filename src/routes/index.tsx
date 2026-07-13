@@ -206,31 +206,13 @@ function Index() {
                 </svg>
               }
               title="RECPRO | Audiovisual"
-              description={"Fale com a produtora pelo WhatsApp.\n"}
-            />
-          </motion.div>
-          <motion.div variants={item}>
-            <LinkCard
-              href={YOUTUBE_VLOG}
-              icon={<Youtube className="h-5 w-5" />}
-              title="MEU PAÍS CEARÁ | Playlist"
-              description="Rotina, viagens e o Ceará raiz por onde eu passo."
+              description={"Fale com a gente pelo WhatsApp."}
             />
           </motion.div>
         </motion.section>
 
-
-
-        {/* Final CTA */}
-        <motion.section
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="mt-10 text-center"
-        >
-          <p className="text-sm text-white/50">Escolha uma opção acima e continue a experiência.</p>
-          <div className="mt-5 flex items-center justify-center gap-3">
+        <footer className="mt-auto flex flex-col items-center gap-5 pt-10">
+          <div className="flex items-center justify-center gap-3">
             <SocialIcon href={INSTAGRAM_URL} label="Instagram">
               <Instagram className="h-4 w-4" />
             </SocialIcon>
@@ -241,10 +223,9 @@ function Index() {
               <Mail className="h-4 w-4" />
             </SocialIcon>
           </div>
-        </motion.section>
-
-        <footer className="mt-auto pt-10 text-center text-xs text-white/30">
-          © {new Date().getFullYear()} Raul Eleutério. Todos os direitos reservados.
+          <p className="text-center text-xs text-white/30">
+            © {new Date().getFullYear()} Raul Eleutério. Todos os direitos reservados.
+          </p>
         </footer>
       </div>
     </main>
