@@ -43,13 +43,13 @@ img{max-width:100%;display:block}
   will-change:transform;
 }
 .meteor-1{
-  top:2vh; width:112px; transform:rotate(-8deg);
-  animation:meteor-fly-1 11s linear infinite;
+  top:2vh; width:112px;
+  animation:meteor-fly-1 11s linear infinite both;
 }
 .meteor-2{
-  top:22vh; width:96px; transform:rotate(-10deg);
-  animation:meteor-fly-2 11s linear infinite;
-  animation-delay:3s;
+  top:22vh; width:96px;
+  animation:meteor-fly-2 11s linear infinite both;
+  animation-delay:-8s;
 }
 @keyframes meteor-fly-1{
   0%{transform:translate(30vw,0) rotate(-8deg)}
