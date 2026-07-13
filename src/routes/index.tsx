@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import {
   motion,
+  AnimatePresence,
   useMotionValue,
   useSpring,
   useTransform,
@@ -72,6 +73,7 @@ const item: Variants = {
 };
 
 function Index() {
+  const [zoomed, setZoomed] = useState(false);
   // Parallax pointer for the ambient glow
   const px = useMotionValue(0);
   const py = useMotionValue(0);
@@ -154,17 +156,22 @@ function Index() {
               transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
               className="absolute -inset-[3px] rounded-full bg-[conic-gradient(from_0deg,#3a3a3c,#1c1c1e,#48484a,#1c1c1e,#3a3a3c)]"
             />
-            <motion.div
+            <motion.button
+              type="button"
+              onClick={() => setZoomed(true)}
               whileHover={{ scale: 1.05, rotate: -3 }}
+              whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", stiffness: 300, damping: 18 }}
-              className="relative grid h-24 w-24 place-items-center overflow-hidden rounded-full bg-gradient-to-br from-zinc-800 to-black ring-1 ring-white/10"
+              className="relative grid h-24 w-24 place-items-center overflow-hidden rounded-full bg-gradient-to-br from-zinc-800 to-black ring-1 ring-white/10 cursor-zoom-in"
+              aria-label="Ampliar foto de perfil"
             >
-              <img
+              <motion.img
+                layoutId="profile-photo"
                 src={profilePhoto.url}
                 alt="Foto de perfil"
                 className="h-full w-full object-cover"
               />
-            </motion.div>
+            </motion.button>
           </motion.div>
 
           <motion.h1
@@ -247,6 +254,28 @@ function Index() {
           © {new Date().getFullYear()} Raul Eleutério. Todos os direitos reservados.
         </footer>
       </div>
+
+      <AnimatePresence>
+        {zoomed && (
+          <motion.div
+            key="lightbox"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            onClick={() => setZoomed(false)}
+            className="fixed inset-0 z-50 grid place-items-center bg-black/90 backdrop-blur-md p-6 cursor-zoom-out"
+          >
+            <motion.img
+              layoutId="profile-photo"
+              src={profilePhoto.url}
+              alt="Foto de perfil ampliada"
+              className="max-h-[90vh] max-w-[90vw] rounded-2xl object-contain shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </main>
   );
 }
