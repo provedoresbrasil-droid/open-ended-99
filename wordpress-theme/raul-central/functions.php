@@ -20,7 +20,7 @@ function raul_central_assets() {
     );
 
     // Passa a URL da imagem de fundo para o CSS via variável CSS
-    $bg_url = get_theme_file_uri( 'assets/bg-night.jpg' );
+    $bg_url = get_theme_file_uri( 'assets/bg-night.png' );
     $inline = ":root{--bg-night:url('" . esc_url( $bg_url ) . "');}";
     wp_add_inline_style( 'raul-central-style', $inline );
 }
