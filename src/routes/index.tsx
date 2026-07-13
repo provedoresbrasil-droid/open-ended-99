@@ -216,14 +216,6 @@ function Index() {
               description={"Fale com a produtora pelo WhatsApp.\n"}
             />
           </motion.div>
-          <motion.div variants={item}>
-            <LinkCard
-              href={YOUTUBE_VLOG}
-              icon={<Youtube className="h-5 w-5" />}
-              title="MEU PAÍS CEARÁ | Playlist"
-              description="Rotina, viagens e o Ceará raiz por onde eu passo."
-            />
-          </motion.div>
         </motion.section>
 
 
