@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 get_header();
 
-$profile_img  = get_theme_file_uri( 'assets/profile.jpg' );
+$profile_img  = 'https://ra-ul.bio/wp-content/uploads/2026/07/profile.jpg';
 $whatsapp_url = 'https://api.whatsapp.com/send/?phone=5585989608620';
 $instagram    = 'https://instagram.com/rauleleutterio';
 $email        = 'mailto:rauleleutterio@gmail.com';
