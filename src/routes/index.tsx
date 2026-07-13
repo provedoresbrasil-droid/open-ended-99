@@ -211,6 +211,12 @@ function Index() {
           </motion.div>
         </motion.section>
 
+        <p className="mt-6 text-center text-sm text-white/50">
+          Clique no botão acima e continue a experiência.
+        </p>
+          </motion.div>
+        </motion.section>
+
         <footer className="mt-auto flex flex-col items-center gap-5 pt-10">
           <div className="flex items-center justify-center gap-3">
             <SocialIcon href={INSTAGRAM_URL} label="Instagram">
