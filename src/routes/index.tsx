@@ -130,7 +130,7 @@ function Index() {
       </div>
 
 
-      <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-md flex-col px-5 py-10 sm:py-14">
+      <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-md flex-col items-center justify-center px-5 py-10 sm:py-14">
         {/* Hero */}
         <motion.section
           variants={container}
