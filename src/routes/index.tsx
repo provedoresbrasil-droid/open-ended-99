@@ -213,7 +213,7 @@ function Index() {
                 </svg>
               }
               title="RECPRO | Audiovisual"
-              description={"Fale com a produtora pelo WhatsApp.\n"}
+              description={"Fale com a nossa equipe pelo WhatsApp.\n"}
             />
           </motion.div>
         </motion.section>
