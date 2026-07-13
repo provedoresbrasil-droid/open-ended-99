@@ -49,7 +49,7 @@ $youtube_vlog = 'https://youtube.com/@exemplo-vlog';
                 </span>
                 <span class="card-body">
                     <span class="card-title">RECPRO | Audiovisual</span>
-                    <span class="card-desc">Fale com a produtora pelo WhatsApp.</span>
+                    <span class="card-desc">Fale com a nossa equipe pelo WhatsApp.</span>
                 </span>
                 <span class="card-arrow" aria-hidden="true">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
