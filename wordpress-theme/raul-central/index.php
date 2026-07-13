@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 get_header();
 
-$profile_img  = get_theme_file_uri( 'assets/profile.jpg' );
+$profile_img  = 'https://ra-ul.bio/wp-content/uploads/2026/07/profile.jpg';
 $whatsapp_url = 'https://api.whatsapp.com/send/?phone=5585989608620';
 $instagram    = 'https://instagram.com/rauleleutterio';
 $email        = 'mailto:rauleleutterio@gmail.com';
@@ -30,7 +30,9 @@ $youtube_vlog = 'https://youtube.com/@exemplo-vlog';
                 <span class="pulse" aria-hidden="true"></span>
                 <div class="avatar-ring" aria-hidden="true"></div>
                 <div class="avatar">
-                    <img src="<?php echo esc_url( $profile_img ); ?>" alt="Foto de perfil de Raul Eleutério" />
+                    <a href="<?php echo esc_url( $profile_img ); ?>" data-lightbox="perfil" class="glightbox" data-gallery="perfil">
+                        <img src="<?php echo esc_url( $profile_img ); ?>" alt="Foto de perfil de Raul Eleutério" />
+                    </a>
                 </div>
             </div>
             <h1 class="name">Raul Eleutério</h1>
