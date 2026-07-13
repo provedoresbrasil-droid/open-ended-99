@@ -77,14 +77,23 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Raul Eleutério | Central Premium" },
+      {
+        name: "description",
+        content: "Soluções, conteúdos e projetos reunidos em um só lugar.",
+      },
+      { property: "og:title", content: "Raul Eleutério | Central Premium" },
+      {
+        property: "og:description",
+        content: "Soluções, conteúdos e projetos reunidos em um só lugar.",
+      },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Raul Eleutério | Central Premium" },
+      {
+        name: "twitter:description",
+        content: "Soluções, conteúdos e projetos reunidos em um só lugar.",
+      },
     ],
     links: [
       {
@@ -101,7 +110,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="pt-BR">
       <head>
         <HeadContent />
       </head>

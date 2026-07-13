@@ -4,41 +4,27 @@ import {
   useMotionValue,
   useSpring,
   useTransform,
-  useInView,
-  animate,
   type Variants,
   type MotionValue,
 } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
-import { ArrowUpRight, Instagram, MessageCircle, Mail, ShieldCheck, Youtube } from "lucide-react";
+import { useEffect, useRef } from "react";
+import { ArrowUpRight, Instagram, MessageCircle, Mail } from "lucide-react";
 import profilePhoto from "@/assets/profile.jpg.asset.json";
 import bgNight from "@/assets/bg-night.png.asset.json";
-
-type CardTheme = "recpro" | "meupais";
-
-const THEMES: Record<
-  CardTheme,
-  { gradient: string; glow: string; accentRing: string }
-> = {
-  recpro: {
-    gradient: "from-red-600/40 via-rose-700/25 to-transparent",
-    glow: "bg-red-500/40",
-    accentRing: "ring-red-400/30",
-  },
-  meupais: {
-    gradient: "from-orange-600/45 via-amber-600/25 to-transparent",
-    glow: "bg-orange-500/45",
-    accentRing: "ring-orange-400/30",
-  },
-};
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Raul Eleutério | Central Premium" },
-      { name: "description", content: "Soluções, conteúdos e projetos reunidos em um só lugar." },
+      {
+        name: "description",
+        content: "Soluções, conteúdos e projetos reunidos em um só lugar.",
+      },
       { property: "og:title", content: "Raul Eleutério | Central Premium" },
-      { property: "og:description", content: "Soluções, conteúdos e projetos reunidos em um só lugar." },
+      {
+        property: "og:description",
+        content: "Soluções, conteúdos e projetos reunidos em um só lugar.",
+      },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/" },
     ],
@@ -47,20 +33,17 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const SITE_URL = "https://exemplo.com";
-const YOUTUBE_MAIN = "https://youtube.com/@exemplo";
-const YOUTUBE_CUTS = "https://youtube.com/@exemplo-cortes";
-const YOUTUBE_PODCAST = "https://youtube.com/@exemplo-podcast";
-const YOUTUBE_VLOG = "https://youtube.com/@exemplo-vlog";
 const INSTAGRAM_URL = "https://instagram.com/rauleleutterio";
 const WHATSAPP_URL = "https://api.whatsapp.com/send/?phone=5585989608620";
 const EMAIL_URL = "mailto:rauleleutterio@gmail.com";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
+
 const container: Variants = {
   hidden: {},
   show: { transition: { staggerChildren: 0.08, delayChildren: 0.1 } },
 };
+
 const item: Variants = {
   hidden: { opacity: 0, y: 20, filter: "blur(8px)" },
   show: {
@@ -75,8 +58,6 @@ function Index() {
   // Parallax pointer for the ambient glow
   const px = useMotionValue(0);
   const py = useMotionValue(0);
-  const glowX = useSpring(px, { stiffness: 50, damping: 20 });
-  const glowY = useSpring(py, { stiffness: 50, damping: 20 });
 
   useEffect(() => {
     const onMove = (e: PointerEvent) => {
@@ -90,15 +71,16 @@ function Index() {
   }, [px, py]);
 
   return (
-    <main className="relative min-h-screen overflow-hidden text-white antialiased">
-      {/* Apple-style ambient background */}
+    <main className="relative min-h-dvh overflow-hidden text-white antialiased">
+      {/* Ambient background */}
       <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${bgNight.url})` }}
         />
         <div className="absolute inset-0 bg-black/40" />
-        {/* Meteorito discreto no céu */}
+
+        {/* Meteoros */}
         <motion.div
           aria-hidden
           initial={{ x: "30vw", y: "0vh" }}
@@ -111,7 +93,6 @@ function Index() {
           }}
           className="absolute right-0 top-[2vh] h-[1.5px] w-28 -rotate-[8deg] rounded-full bg-gradient-to-r from-white via-white/70 to-transparent opacity-40 shadow-[0_0_6px_1px_rgba(255,255,255,0.45)]"
         />
-        {/* Segundo meteorito */}
         <motion.div
           aria-hidden
           initial={{ x: "30vw", y: "0vh" }}
@@ -127,8 +108,7 @@ function Index() {
         />
       </div>
 
-
-      <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-md flex-col px-5 py-10 sm:py-14">
+      <div className="relative z-10 mx-auto flex min-h-dvh w-full max-w-md flex-col px-5 py-10 sm:py-14">
         {/* Hero */}
         <motion.section
           variants={container}
@@ -137,14 +117,18 @@ function Index() {
           className="flex flex-col items-center text-center"
         >
           <motion.div variants={item} className="relative">
-            {/* Pulsing rings */}
             {[0, 1, 2].map((i) => (
               <motion.span
                 key={i}
                 aria-hidden
                 initial={{ opacity: 0.5, scale: 1 }}
                 animate={{ opacity: 0, scale: 1.6 }}
-                transition={{ duration: 2.4, repeat: Infinity, ease: "easeOut", delay: i * 0.8 }}
+                transition={{
+                  duration: 2.4,
+                  repeat: Infinity,
+                  ease: "easeOut",
+                  delay: i * 0.8,
+                }}
                 className="absolute inset-0 rounded-full ring-1 ring-white/30"
               />
             ))}
@@ -155,7 +139,7 @@ function Index() {
             >
               <img
                 src={profilePhoto.url}
-                alt="Foto de perfil"
+                alt="Foto de perfil de Raul Eleutério"
                 className="h-full w-full object-cover"
               />
             </motion.div>
@@ -173,14 +157,21 @@ function Index() {
               Raul Eleutério
             </motion.span>
           </motion.h1>
+
           <motion.p variants={item} className="mt-1 text-sm font-medium text-white/50">
-            <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-white">
+            <a
+              href={INSTAGRAM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Perfil de Raul Eleutério no Instagram"
+              className="transition-colors hover:text-white"
+            >
               @rauleleutterio
             </a>
           </motion.p>
         </motion.section>
 
-        {/* Primary */}
+        {/* Primary action */}
         <motion.section
           variants={container}
           initial="hidden"
@@ -200,7 +191,7 @@ function Index() {
                 </svg>
               }
               title="RECPRO | Audiovisual"
-              description={"Fale com a gente pelo WhatsApp."}
+              description="Fale com a gente pelo WhatsApp."
             />
           </motion.div>
         </motion.section>
@@ -222,7 +213,8 @@ function Index() {
             </SocialIcon>
           </div>
           <p className="text-center text-xs text-white/30">
-            © {new Date().getFullYear()} Raul Eleutério. Todos os direitos reservados.
+            © {new Date().getFullYear()} Raul Eleutério. Todos os direitos
+            reservados.
           </p>
         </footer>
       </div>
@@ -235,27 +227,25 @@ function LinkCard({
   icon,
   title,
   description,
-  primary = false,
-  accent = false,
-  compact = false,
-  theme,
 }: {
   href: string;
   icon: React.ReactNode;
   title: string;
   description: string;
-  primary?: boolean;
-  accent?: boolean;
-  compact?: boolean;
-  theme?: CardTheme;
 }) {
-  const t = theme ? THEMES[theme] : undefined;
   // 3D tilt with spring
   const ref = useRef<HTMLAnchorElement>(null);
   const mx = useMotionValue(0);
   const my = useMotionValue(0);
-  const rx = useSpring(useTransform(my, [-0.5, 0.5], [8, -8]), { stiffness: 200, damping: 18 });
-  const ry = useSpring(useTransform(mx, [-0.5, 0.5], [-10, 10]), { stiffness: 200, damping: 18 });
+  const rx = useSpring(useTransform(my, [-0.5, 0.5], [8, -8]), {
+    stiffness: 200,
+    damping: 18,
+  });
+  const ry = useSpring(useTransform(mx, [-0.5, 0.5], [-10, 10]), {
+    stiffness: 200,
+    damping: 18,
+  });
+
   // Spotlight follow
   const sx = useMotionValue(50);
   const sy = useMotionValue(50);
@@ -276,6 +266,7 @@ function LinkCard({
     sx.set(x * 100);
     sy.set(y * 100);
   };
+
   const onLeave = () => {
     mx.set(0);
     my.set(0);
@@ -291,23 +282,8 @@ function LinkCard({
       onPointerLeave={onLeave}
       whileTap={{ scale: 0.985 }}
       style={{ rotateX: rx, rotateY: ry, transformPerspective: 900 }}
-      className={`group relative block overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.06] to-white/[0.02] backdrop-blur-xl shadow-[0_1px_0_0_rgba(255,255,255,0.06)_inset,0_20px_60px_-20px_rgba(0,0,0,0.8)] transition-colors hover:border-white/20 will-change-transform ${t?.accentRing ?? ""}`}
+      className="group relative block overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.06] to-white/[0.02] backdrop-blur-xl shadow-[0_1px_0_0_rgba(255,255,255,0.06)_inset,0_20px_60px_-20px_rgba(0,0,0,0.8)] transition-colors hover:border-white/20 will-change-transform"
     >
-      {/* Themed background (color-only, inspired by logo colors) */}
-      {t && (
-        <>
-          <span
-            aria-hidden
-            className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${t.gradient} opacity-70 mix-blend-overlay`}
-          />
-          <motion.span
-            aria-hidden
-            animate={{ scale: [1, 1.15, 1], opacity: [0.5, 0.8, 0.5] }}
-            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-            className={`pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full blur-3xl ${t.glow}`}
-          />
-        </>
-      )}
       {/* Spotlight */}
       <motion.span
         aria-hidden
@@ -317,38 +293,22 @@ function LinkCard({
       {/* Shimmer sweep */}
       <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/[0.12] to-transparent transition-transform duration-700 group-hover:translate-x-full" />
 
-
       <span
-        className={`relative flex items-center gap-4 ${compact ? "p-3.5" : "p-4"}`}
+        className="relative flex items-center gap-4 p-4"
         style={{ transform: "translateZ(30px)" }}
       >
         <motion.span
-          whileHover={{ rotate: accent ? -8 : 6, scale: 1.08 }}
+          whileHover={{ rotate: 6, scale: 1.08 }}
           transition={{ type: "spring", stiffness: 300, damping: 14 }}
-          className={`grid shrink-0 place-items-center rounded-xl ring-1 ring-white/10 ${
-            compact ? "h-10 w-10" : "h-12 w-12"
-          } ${
-            accent
-              ? "bg-gradient-to-br from-red-500 to-red-700 text-white"
-              : primary
-                ? "bg-gradient-to-br from-white to-zinc-300 text-black"
-                : "bg-gradient-to-br from-zinc-700 to-zinc-900 text-white"
-          }`}
+          className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-zinc-700 to-zinc-900 text-white ring-1 ring-white/10"
         >
           {icon}
         </motion.span>
         <span className="min-w-0 flex-1">
-          <span className="flex items-center gap-2">
-            <span className={`truncate font-semibold tracking-tight text-white ${compact ? "text-sm" : "text-base"}`}>
-              {title}
-            </span>
-            {primary && (
-              <span className="rounded-full border border-white/15 bg-white/10 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-white/80">
-                Principal
-              </span>
-            )}
+          <span className="truncate text-base font-semibold tracking-tight text-white">
+            {title}
           </span>
-          <span className={`mt-0.5 block text-white/55 whitespace-pre-line ${compact ? "text-xs" : "text-sm"}`}>
+          <span className="mt-0.5 block whitespace-pre-line text-sm text-white/55">
             {description}
           </span>
         </span>
@@ -365,50 +325,6 @@ function LinkCard({
   );
 }
 
-function Counter({ to, prefix = "", suffix = "" }: { to: number; prefix?: string; suffix?: string }) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-30px" });
-  const [val, setVal] = useState(0);
-  useEffect(() => {
-    if (!inView) return;
-    const controls = animate(0, to, {
-      duration: 1.6,
-      ease: [0.22, 1, 0.36, 1],
-      onUpdate: (v) => setVal(v),
-    });
-    return () => controls.stop();
-  }, [inView, to]);
-  const display = to < 10 ? val.toFixed(1).replace(/\.0$/, "") : Math.round(val).toString();
-  return (
-    <span ref={ref}>
-      {prefix}
-      {display}
-      {suffix}
-    </span>
-  );
-}
-
-function Stat({
-  to,
-  prefix,
-  suffix,
-  label,
-}: {
-  to: number;
-  prefix?: string;
-  suffix?: string;
-  label: string;
-}) {
-  return (
-    <div className="text-center">
-      <div className="bg-gradient-to-b from-white to-white/50 bg-clip-text text-lg font-semibold tracking-tight text-transparent sm:text-xl">
-        <Counter to={to} prefix={prefix} suffix={suffix} />
-      </div>
-      <div className="mt-0.5 text-[10px] uppercase tracking-[0.15em] text-white/45">{label}</div>
-    </div>
-  );
-}
-
 function SocialIcon({
   href,
   label,
@@ -422,6 +338,7 @@ function SocialIcon({
   const ref = useRef<HTMLAnchorElement>(null);
   const x = useSpring(0, { stiffness: 250, damping: 18 });
   const y = useSpring(0, { stiffness: 250, damping: 18 });
+
   const onMove = (e: React.PointerEvent<HTMLAnchorElement>) => {
     const el = ref.current;
     if (!el) return;
@@ -429,10 +346,12 @@ function SocialIcon({
     x.set(e.clientX - (r.left + r.width / 2));
     y.set(e.clientY - (r.top + r.height / 2));
   };
+
   const onLeave = () => {
     x.set(0);
     y.set(0);
   };
+
   return (
     <motion.a
       ref={ref}
