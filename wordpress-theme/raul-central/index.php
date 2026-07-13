@@ -29,9 +29,9 @@ $youtube_vlog = 'https://youtube.com/@exemplo-vlog';
                 <span class="pulse" aria-hidden="true"></span>
                 <span class="pulse" aria-hidden="true"></span>
                 <div class="avatar-ring" aria-hidden="true"></div>
-                <div class="avatar">
+                <button type="button" class="avatar" id="avatar-trigger" aria-label="Ampliar foto de perfil">
                     <img src="<?php echo esc_url( $profile_img ); ?>" alt="Foto de perfil de Raul Eleutério" />
-                </div>
+                </button>
             </div>
             <h1 class="name">Raul Eleutério</h1>
             <p class="handle">
@@ -78,5 +78,21 @@ $youtube_vlog = 'https://youtube.com/@exemplo-vlog';
             &copy; <?php echo esc_html( date( 'Y' ) ); ?> Raul Eleutério. Todos os direitos reservados.
         </footer>
     </div>
+
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Foto ampliada" hidden>
+        <img src="<?php echo esc_url( $profile_img ); ?>" alt="Foto de perfil ampliada" />
+    </div>
 </main>
+<script>
+(function(){
+    var trigger = document.getElementById('avatar-trigger');
+    var lightbox = document.getElementById('lightbox');
+    if(!trigger || !lightbox) return;
+    function open(){ lightbox.hidden = false; requestAnimationFrame(function(){ lightbox.classList.add('is-open'); }); document.body.style.overflow='hidden'; }
+    function close(){ lightbox.classList.remove('is-open'); document.body.style.overflow=''; setTimeout(function(){ lightbox.hidden = true; }, 250); }
+    trigger.addEventListener('click', open);
+    lightbox.addEventListener('click', close);
+    document.addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
+})();
+</script>
 <?php get_footer(); ?>
