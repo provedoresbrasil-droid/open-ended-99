@@ -73,6 +73,7 @@ const item: Variants = {
 };
 
 function Index() {
+  const [zoomed, setZoomed] = useState(false);
   // Parallax pointer for the ambient glow
   const px = useMotionValue(0);
   const py = useMotionValue(0);
