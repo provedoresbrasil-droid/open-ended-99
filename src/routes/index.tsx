@@ -254,6 +254,28 @@ function Index() {
           © {new Date().getFullYear()} Raul Eleutério. Todos os direitos reservados.
         </footer>
       </div>
+
+      <AnimatePresence>
+        {zoomed && (
+          <motion.div
+            key="lightbox"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            onClick={() => setZoomed(false)}
+            className="fixed inset-0 z-50 grid place-items-center bg-black/90 backdrop-blur-md p-6 cursor-zoom-out"
+          >
+            <motion.img
+              layoutId="profile-photo"
+              src={profilePhoto.url}
+              alt="Foto de perfil ampliada"
+              className="max-h-[90vh] max-w-[90vw] rounded-2xl object-contain shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </main>
   );
 }
