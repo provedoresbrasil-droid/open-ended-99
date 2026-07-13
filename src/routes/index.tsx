@@ -95,9 +95,11 @@ function Index() {
     <main className="relative min-h-screen overflow-hidden text-white antialiased">
       {/* Apple-style ambient background */}
       <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
-        <div
+        <motion.div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${bgNight.url})` }}
+          style={{ backgroundImage: `url(${bgNight.url})`, scale: 1.5 }}
+          animate={{ rotate: 360 }}
+          transition={{ duration: 240, ease: "linear", repeat: Infinity }}
         />
         <div className="absolute inset-0 bg-black/40" />
         {/* Meteorito discreto no céu */}
