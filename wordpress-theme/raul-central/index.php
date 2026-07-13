@@ -29,9 +29,9 @@ $youtube_vlog = 'https://youtube.com/@exemplo-vlog';
                 <span class="pulse" aria-hidden="true"></span>
                 <span class="pulse" aria-hidden="true"></span>
                 <div class="avatar-ring" aria-hidden="true"></div>
-                <button type="button" class="avatar" id="avatar-trigger" aria-label="Ampliar foto de perfil">
+                <div class="avatar">
                     <img src="<?php echo esc_url( $profile_img ); ?>" alt="Foto de perfil de Raul Eleutério" />
-                </button>
+                </div>
             </div>
             <h1 class="name">Raul Eleutério</h1>
             <p class="handle">
@@ -49,13 +49,28 @@ $youtube_vlog = 'https://youtube.com/@exemplo-vlog';
                 </span>
                 <span class="card-body">
                     <span class="card-title">RECPRO | Audiovisual</span>
-                    <span class="card-desc">Fale com a nossa equipe pelo WhatsApp.</span>
+                    <span class="card-desc">Fale com a produtora pelo WhatsApp.</span>
                 </span>
                 <span class="card-arrow" aria-hidden="true">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
                 </span>
             </a>
 
+            <a class="card card-meupais" href="<?php echo esc_url( $youtube_vlog ); ?>" target="_blank" rel="noopener noreferrer">
+                <span class="card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.42a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/>
+                        <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/>
+                    </svg>
+                </span>
+                <span class="card-body">
+                    <span class="card-title">MEU PAÍS CEARÁ | Playlist</span>
+                    <span class="card-desc">Rotina, viagens e o Ceará raiz por onde eu passo.</span>
+                </span>
+                <span class="card-arrow" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+                </span>
+            </a>
         </section>
 
         <!-- CTA final -->
@@ -78,21 +93,5 @@ $youtube_vlog = 'https://youtube.com/@exemplo-vlog';
             &copy; <?php echo esc_html( date( 'Y' ) ); ?> Raul Eleutério. Todos os direitos reservados.
         </footer>
     </div>
-
-    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Foto ampliada" hidden>
-        <img src="<?php echo esc_url( $profile_img ); ?>" alt="Foto de perfil ampliada" />
-    </div>
 </main>
-<script>
-(function(){
-    var trigger = document.getElementById('avatar-trigger');
-    var lightbox = document.getElementById('lightbox');
-    if(!trigger || !lightbox) return;
-    function open(){ lightbox.hidden = false; requestAnimationFrame(function(){ lightbox.classList.add('is-open'); }); document.body.style.overflow='hidden'; }
-    function close(){ lightbox.classList.remove('is-open'); document.body.style.overflow=''; setTimeout(function(){ lightbox.hidden = true; }, 250); }
-    trigger.addEventListener('click', open);
-    lightbox.addEventListener('click', close);
-    document.addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
-})();
-</script>
 <?php get_footer(); ?>

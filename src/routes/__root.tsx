@@ -77,18 +77,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Raul Eleutério | Central Premium" },
-      { name: "description", content: "Soluções, conteúdos e projetos reunidos em um só lugar." },
+      { title: "Lovable App" },
+      { name: "description", content: "Lovable Generated Project" },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Raul Eleutério | Central Premium" },
-      { property: "og:description", content: "Soluções, conteúdos e projetos reunidos em um só lugar." },
+      { property: "og:title", content: "Lovable App" },
+      { property: "og:description", content: "Lovable Generated Project" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
-      { name: "twitter:title", content: "Raul Eleutério | Central Premium" },
-      { name: "twitter:description", content: "Soluções, conteúdos e projetos reunidos em um só lugar." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/6f578a2a-c5b3-4b73-9f2a-0e09ff6da24e/id-preview-ee50e25d--32bf7951-1f82-4620-ae14-fe8b5b71e5be.lovable.app-1783971317246.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/6f578a2a-c5b3-4b73-9f2a-0e09ff6da24e/id-preview-ee50e25d--32bf7951-1f82-4620-ae14-fe8b5b71e5be.lovable.app-1783971317246.png" },
     ],
     links: [
       {

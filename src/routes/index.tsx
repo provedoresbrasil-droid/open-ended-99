@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import {
   motion,
-  AnimatePresence,
   useMotionValue,
   useSpring,
   useTransform,
@@ -73,7 +72,6 @@ const item: Variants = {
 };
 
 function Index() {
-  const [zoomed, setZoomed] = useState(false);
   // Parallax pointer for the ambient glow
   const px = useMotionValue(0);
   const py = useMotionValue(0);
@@ -130,7 +128,7 @@ function Index() {
       </div>
 
 
-      <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-md flex-col items-center justify-center px-5 py-10 sm:py-14">
+      <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-md flex-col px-5 py-10 sm:py-14">
         {/* Hero */}
         <motion.section
           variants={container}
@@ -156,22 +154,17 @@ function Index() {
               transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
               className="absolute -inset-[3px] rounded-full bg-[conic-gradient(from_0deg,#3a3a3c,#1c1c1e,#48484a,#1c1c1e,#3a3a3c)]"
             />
-            <motion.button
-              type="button"
-              onClick={() => setZoomed(true)}
+            <motion.div
               whileHover={{ scale: 1.05, rotate: -3 }}
-              whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", stiffness: 300, damping: 18 }}
-              className="relative grid h-24 w-24 place-items-center overflow-hidden rounded-full bg-gradient-to-br from-zinc-800 to-black ring-1 ring-white/10 cursor-zoom-in"
-              aria-label="Ampliar foto de perfil"
+              className="relative grid h-24 w-24 place-items-center overflow-hidden rounded-full bg-gradient-to-br from-zinc-800 to-black ring-1 ring-white/10"
             >
-              <motion.img
-                layoutId="profile-photo"
+              <img
                 src={profilePhoto.url}
                 alt="Foto de perfil"
                 className="h-full w-full object-cover"
               />
-            </motion.button>
+            </motion.div>
           </motion.div>
 
           <motion.h1
@@ -198,7 +191,7 @@ function Index() {
           variants={container}
           initial="hidden"
           animate="show"
-          className="mt-10 w-full space-y-3"
+          className="mt-10 space-y-3"
         >
           <motion.div variants={item}>
             <LinkCard
@@ -213,7 +206,15 @@ function Index() {
                 </svg>
               }
               title="RECPRO | Audiovisual"
-              description={"Fale com a nossa equipe pelo WhatsApp.\n"}
+              description={"Fale com a produtora pelo WhatsApp.\n"}
+            />
+          </motion.div>
+          <motion.div variants={item}>
+            <LinkCard
+              href={YOUTUBE_VLOG}
+              icon={<Youtube className="h-5 w-5" />}
+              title="MEU PAÍS CEARÁ | Playlist"
+              description="Rotina, viagens e o Ceará raiz por onde eu passo."
             />
           </motion.div>
         </motion.section>
@@ -226,7 +227,7 @@ function Index() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="mt-10 w-full text-center"
+          className="mt-10 text-center"
         >
           <p className="text-sm text-white/50">Escolha uma opção acima e continue a experiência.</p>
           <div className="mt-5 flex items-center justify-center gap-3">
@@ -242,32 +243,10 @@ function Index() {
           </div>
         </motion.section>
 
-        <footer className="mt-auto w-full pt-10 text-center text-xs text-white/30">
+        <footer className="mt-auto pt-10 text-center text-xs text-white/30">
           © {new Date().getFullYear()} Raul Eleutério. Todos os direitos reservados.
         </footer>
       </div>
-
-      <AnimatePresence>
-        {zoomed && (
-          <motion.div
-            key="lightbox"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.25 }}
-            onClick={() => setZoomed(false)}
-            className="fixed inset-0 z-50 grid place-items-center bg-black/90 backdrop-blur-md p-6 cursor-zoom-out"
-          >
-            <motion.img
-              layoutId="profile-photo"
-              src={profilePhoto.url}
-              alt="Foto de perfil ampliada"
-              className="max-h-[90vh] max-w-[90vw] rounded-2xl object-contain shadow-2xl"
-              onClick={(e) => e.stopPropagation()}
-            />
-          </motion.div>
-        )}
-      </AnimatePresence>
     </main>
   );
 }

@@ -19,18 +19,9 @@ function raul_central_assets() {
         '1.0.0'
     );
 
-    // Procura a imagem de fundo em jpg/jpeg/png/webp dentro de assets/
-    $bg_url = '';
-    foreach ( array( 'jpg', 'jpeg', 'png', 'webp' ) as $ext ) {
-        $path = get_theme_file_path( 'assets/bg-night.' . $ext );
-        if ( file_exists( $path ) ) {
-            $bg_url = get_theme_file_uri( 'assets/bg-night.' . $ext );
-            break;
-        }
-    }
-    if ( $bg_url ) {
-        $inline = ":root{--bg-night:url('" . esc_url( $bg_url ) . "');}";
-        wp_add_inline_style( 'raul-central-style', $inline );
-    }
+    // Passa a URL da imagem de fundo para o CSS via variável CSS
+    $bg_url = get_theme_file_uri( 'assets/bg-night.jpg' );
+    $inline = ":root{--bg-night:url('" . esc_url( $bg_url ) . "');}";
+    wp_add_inline_style( 'raul-central-style', $inline );
 }
 add_action( 'wp_enqueue_scripts', 'raul_central_assets' );
