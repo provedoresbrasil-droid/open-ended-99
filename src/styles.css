@@ -142,8 +142,3 @@
     color: var(--color-foreground);
   }
 }
-
-@keyframes twinkle {
-  0%, 100% { opacity: 1; filter: brightness(1); }
-  50% { opacity: 0.45; filter: brightness(1.5); }
-}
