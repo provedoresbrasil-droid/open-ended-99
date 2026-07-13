@@ -130,7 +130,7 @@ function Index() {
       </div>
 
 
-      <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-md flex-col px-5 py-10 sm:py-14">
+      <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-md flex-col items-center justify-center px-5 py-10 sm:py-14">
         {/* Hero */}
         <motion.section
           variants={container}
@@ -198,7 +198,7 @@ function Index() {
           variants={container}
           initial="hidden"
           animate="show"
-          className="mt-10 space-y-3"
+          className="mt-10 w-full space-y-3"
         >
           <motion.div variants={item}>
             <LinkCard
@@ -226,7 +226,7 @@ function Index() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="mt-10 text-center"
+          className="mt-10 w-full text-center"
         >
           <p className="text-sm text-white/50">Escolha uma opção acima e continue a experiência.</p>
           <div className="mt-5 flex items-center justify-center gap-3">
@@ -242,7 +242,7 @@ function Index() {
           </div>
         </motion.section>
 
-        <footer className="mt-auto pt-10 text-center text-xs text-white/30">
+        <footer className="mt-auto w-full pt-10 text-center text-xs text-white/30">
           © {new Date().getFullYear()} Raul Eleutério. Todos os direitos reservados.
         </footer>
       </div>
