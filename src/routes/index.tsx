@@ -156,17 +156,22 @@ function Index() {
               transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
               className="absolute -inset-[3px] rounded-full bg-[conic-gradient(from_0deg,#3a3a3c,#1c1c1e,#48484a,#1c1c1e,#3a3a3c)]"
             />
-            <motion.div
+            <motion.button
+              type="button"
+              onClick={() => setZoomed(true)}
               whileHover={{ scale: 1.05, rotate: -3 }}
+              whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", stiffness: 300, damping: 18 }}
-              className="relative grid h-24 w-24 place-items-center overflow-hidden rounded-full bg-gradient-to-br from-zinc-800 to-black ring-1 ring-white/10"
+              className="relative grid h-24 w-24 place-items-center overflow-hidden rounded-full bg-gradient-to-br from-zinc-800 to-black ring-1 ring-white/10 cursor-zoom-in"
+              aria-label="Ampliar foto de perfil"
             >
-              <img
+              <motion.img
+                layoutId="profile-photo"
                 src={profilePhoto.url}
                 alt="Foto de perfil"
                 className="h-full w-full object-cover"
               />
-            </motion.div>
+            </motion.button>
           </motion.div>
 
           <motion.h1
