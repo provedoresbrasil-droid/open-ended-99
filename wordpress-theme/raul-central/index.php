@@ -30,9 +30,7 @@ $youtube_vlog = 'https://youtube.com/@exemplo-vlog';
                 <span class="pulse" aria-hidden="true"></span>
                 <div class="avatar-ring" aria-hidden="true"></div>
                 <div class="avatar">
-                    <a href="<?php echo esc_url( $profile_img ); ?>" data-lightbox="perfil" class="glightbox" data-gallery="perfil">
-                        <img src="<?php echo esc_url( $profile_img ); ?>" alt="Foto de perfil de Raul Eleutério" />
-                    </a>
+                    <img src="<?php echo esc_url( $profile_img ); ?>" alt="Foto de perfil de Raul Eleutério" />
                 </div>
             </div>
             <h1 class="name">Raul Eleutério</h1>
