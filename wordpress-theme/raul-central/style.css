@@ -154,16 +154,8 @@ img{max-width:100%;display:block}
   background:linear-gradient(135deg,rgba(220,38,38,.4),rgba(190,18,60,.25),transparent);
   mix-blend-mode:overlay;opacity:.7;
 }
-.card-meupais::before{
-  content:"";position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(135deg,rgba(234,88,12,.45),rgba(217,119,6,.25),transparent);
-  mix-blend-mode:overlay;opacity:.7;
-}
 
-/* CTA final */
-.cta{margin-top:2.5rem;text-align:center}
-.cta p{font-size:.875rem;color:rgba(255,255,255,.5)}
-.socials{margin-top:1.25rem;display:flex;justify-content:center;gap:.75rem}
+.socials{display:flex;justify-content:center;gap:.75rem}
 .social{
   display:grid;place-items:center;
   height:2.5rem;width:2.5rem;border-radius:9999px;

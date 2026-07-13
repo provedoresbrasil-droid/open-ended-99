@@ -10,7 +10,7 @@ $profile_img  = 'https://ra-ul.bio/wp-content/uploads/2026/07/profile.jpg';
 $whatsapp_url = 'https://api.whatsapp.com/send/?phone=5585989608620';
 $instagram    = 'https://instagram.com/rauleleutterio';
 $email        = 'mailto:rauleleutterio@gmail.com';
-$youtube_vlog = 'https://youtube.com/@exemplo-vlog';
+
 ?>
 <main class="main">
     <!-- Fundo -->
