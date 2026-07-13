@@ -149,12 +149,6 @@ function Index() {
               />
             ))}
             <motion.div
-              aria-hidden
-              animate={{ rotate: 360 }}
-              transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
-              className="absolute -inset-[3px] rounded-full bg-[conic-gradient(from_0deg,#3a3a3c,#1c1c1e,#48484a,#1c1c1e,#3a3a3c)]"
-            />
-            <motion.div
               whileHover={{ scale: 1.05, rotate: -3 }}
               transition={{ type: "spring", stiffness: 300, damping: 18 }}
               className="relative grid h-24 w-24 place-items-center overflow-hidden rounded-full bg-gradient-to-br from-zinc-800 to-black ring-1 ring-white/10"
