@@ -95,33 +95,10 @@ function Index() {
     <main className="relative min-h-screen overflow-hidden text-white antialiased">
       {/* Apple-style ambient background */}
       <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
-        {/* Ground layer (static) */}
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${bgNight.url})` }}
         />
-        {/* Sky layer (rotates) — samples only the top portion of the image and fades into the horizon */}
-        <div
-          className="absolute inset-0"
-          style={{
-            WebkitMaskImage:
-              "linear-gradient(to bottom, black 0%, black 45%, transparent 65%)",
-            maskImage:
-              "linear-gradient(to bottom, black 0%, black 45%, transparent 65%)",
-          }}
-        >
-          <motion.div
-            className="absolute inset-0"
-            style={{
-              backgroundImage: `url(${bgNight.url})`,
-              backgroundSize: "180% 110%",
-              backgroundPosition: "center top",
-              scale: 1.6,
-            }}
-            animate={{ rotate: 360 }}
-            transition={{ duration: 240, ease: "linear", repeat: Infinity }}
-          />
-        </div>
         <div className="absolute inset-0 bg-black/40" />
         {/* Meteorito discreto no céu */}
         <motion.div
