@@ -91,7 +91,7 @@ function Index() {
             repeat: Infinity,
             repeatDelay: 7,
           }}
-          className="absolute right-0 top-[4vh] h-[1.5px] w-28 -rotate-[8deg] rounded-full bg-gradient-to-r from-white via-white/70 to-transparent opacity-40 shadow-[0_0_6px_1px_rgba(255,255,255,0.45)]"
+          className="absolute right-0 top-[1vh] h-[1.5px] w-28 -rotate-[8deg] rounded-full bg-gradient-to-r from-white via-white/70 to-transparent opacity-40 shadow-[0_0_6px_1px_rgba(255,255,255,0.45)]"
         />
         <motion.div
           aria-hidden
@@ -104,7 +104,7 @@ function Index() {
             repeatDelay: 6,
             delay: 3,
           }}
-          className="absolute right-0 top-[14vh] h-[1.5px] w-24 -rotate-[10deg] rounded-full bg-gradient-to-r from-white via-white/70 to-transparent opacity-40 shadow-[0_0_6px_1px_rgba(255,255,255,0.45)]"
+          className="absolute right-0 top-[6vh] h-[1.5px] w-24 -rotate-[10deg] rounded-full bg-gradient-to-r from-white via-white/70 to-transparent opacity-40 shadow-[0_0_6px_1px_rgba(255,255,255,0.45)]"
         />
       </div>
 
