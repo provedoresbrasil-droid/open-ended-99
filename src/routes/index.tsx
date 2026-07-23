@@ -10,7 +10,7 @@ import {
 import { useEffect, useRef } from "react";
 import { ArrowUpRight, Instagram, MessageCircle, Mail } from "lucide-react";
 import profilePhoto from "@/assets/profile.jpg.asset.json";
-import bgNight from "@/assets/bg-night.png.asset.json";
+import bgNight from "@/assets/bg-night-new.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
