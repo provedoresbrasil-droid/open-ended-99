@@ -80,6 +80,38 @@ function Index() {
         />
         <div className="absolute inset-0 bg-black/60" />
 
+        {/* Aurora boreal sutil no céu */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-x-0 top-0 h-[65vh] opacity-25 mix-blend-screen"
+        >
+          <motion.div
+            animate={{
+              x: ["-10%", "10%", "-10%"],
+              opacity: [0.4, 0.7, 0.4],
+            }}
+            transition={{
+              duration: 12,
+              ease: "easeInOut",
+              repeat: Infinity,
+            }}
+            className="absolute -left-[20%] top-0 h-full w-[140%] bg-gradient-to-r from-transparent via-emerald-400/30 to-transparent blur-[60px]"
+          />
+          <motion.div
+            animate={{
+              x: ["5%", "-15%", "5%"],
+              opacity: [0.3, 0.6, 0.3],
+            }}
+            transition={{
+              duration: 16,
+              ease: "easeInOut",
+              repeat: Infinity,
+              delay: 2,
+            }}
+            className="absolute -right-[10%] top-[5%] h-[80%] w-[120%] bg-gradient-to-l from-transparent via-teal-300/25 to-transparent blur-[70px]"
+          />
+        </div>
+
         {/* Meteoros */}
         <motion.div
           aria-hidden
