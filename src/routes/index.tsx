@@ -282,8 +282,18 @@ function LinkCard({
       onPointerLeave={onLeave}
       whileTap={{ scale: 0.985 }}
       style={{ rotateX: rx, rotateY: ry, transformPerspective: 900 }}
-      className="group relative block overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.06] to-white/[0.02] backdrop-blur-xl shadow-[0_1px_0_0_rgba(255,255,255,0.06)_inset,0_20px_60px_-20px_rgba(0,0,0,0.8)] transition-colors hover:border-white/20 will-change-transform"
+      className="group relative block overflow-hidden rounded-[22px] border border-white/[0.18] bg-gradient-to-b from-white/[0.14] via-white/[0.06] to-white/[0.02] backdrop-blur-[28px] shadow-[0_1px_1px_0_rgba(255,255,255,0.16)_inset,0_20px_60px_-20px_rgba(0,0,0,0.85),0_0_0_1px_rgba(255,255,255,0.04)] transition-all duration-300 hover:border-white/[0.28] hover:from-white/[0.18] hover:via-white/[0.09] hover:to-white/[0.03] hover:shadow-[0_1px_1px_0_rgba(255,255,255,0.22)_inset,0_24px_70px_-20px_rgba(0,0,0,0.9),0_0_0_1px_rgba(255,255,255,0.06)] will-change-transform"
     >
+      {/* Liquid glass inner glow */}
+      <span
+        aria-hidden
+        className="pointer-events-none absolute inset-0 rounded-[22px] bg-gradient-to-b from-white/[0.16] via-transparent to-transparent opacity-60"
+      />
+      {/* Liquid glass specular rim */}
+      <span
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent"
+      />
       {/* Spotlight */}
       <motion.span
         aria-hidden
@@ -291,7 +301,7 @@ function LinkCard({
         className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
       />
       {/* Shimmer sweep */}
-      <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/[0.12] to-transparent transition-transform duration-700 group-hover:translate-x-full" />
+      <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/[0.14] to-transparent transition-transform duration-700 group-hover:translate-x-full" />
 
       <span
         className="relative flex items-center gap-4 p-4"
