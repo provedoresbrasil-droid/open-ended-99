@@ -78,25 +78,25 @@ function Index() {
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${bgNight.url})` }}
         />
-        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0 bg-black/60" />
 
         {/* Meteoros */}
         <motion.div
           aria-hidden
           initial={{ x: "30vw", y: "0vh" }}
-          animate={{ x: "-140vw", y: "15vh" }}
+          animate={{ x: "-140vw", y: "8vh" }}
           transition={{
             duration: 4,
             ease: "linear",
             repeat: Infinity,
             repeatDelay: 7,
           }}
-          className="absolute right-0 top-[2vh] h-[1.5px] w-28 -rotate-[8deg] rounded-full bg-gradient-to-r from-white via-white/70 to-transparent opacity-40 shadow-[0_0_6px_1px_rgba(255,255,255,0.45)]"
+          className="absolute right-0 top-[4vh] h-[1.5px] w-28 -rotate-[8deg] rounded-full bg-gradient-to-r from-white via-white/70 to-transparent opacity-40 shadow-[0_0_6px_1px_rgba(255,255,255,0.45)]"
         />
         <motion.div
           aria-hidden
           initial={{ x: "30vw", y: "0vh" }}
-          animate={{ x: "-140vw", y: "15vh" }}
+          animate={{ x: "-140vw", y: "8vh" }}
           transition={{
             duration: 5,
             ease: "linear",
@@ -104,7 +104,7 @@ function Index() {
             repeatDelay: 6,
             delay: 3,
           }}
-          className="absolute right-0 top-[22vh] h-[1.5px] w-24 -rotate-[10deg] rounded-full bg-gradient-to-r from-white via-white/70 to-transparent opacity-40 shadow-[0_0_6px_1px_rgba(255,255,255,0.45)]"
+          className="absolute right-0 top-[14vh] h-[1.5px] w-24 -rotate-[10deg] rounded-full bg-gradient-to-r from-white via-white/70 to-transparent opacity-40 shadow-[0_0_6px_1px_rgba(255,255,255,0.45)]"
         />
       </div>
 
