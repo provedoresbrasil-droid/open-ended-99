@@ -17,6 +17,14 @@ $email        = 'mailto:rauleleutterio@gmail.com';
     <div class="bg-wrap">
         <div class="bg-image"></div>
         <div class="bg-overlay"></div>
+
+        <!-- Aurora boreal sutil -->
+        <div class="aurora" aria-hidden="true">
+            <span class="a1"></span>
+            <span class="a2"></span>
+        </div>
+
+        <!-- Meteoros -->
         <div class="meteor meteor-1" aria-hidden="true"></div>
         <div class="meteor meteor-2" aria-hidden="true"></div>
     </div>
@@ -28,7 +36,6 @@ $email        = 'mailto:rauleleutterio@gmail.com';
                 <span class="pulse" aria-hidden="true"></span>
                 <span class="pulse" aria-hidden="true"></span>
                 <span class="pulse" aria-hidden="true"></span>
-                <div class="avatar-ring" aria-hidden="true"></div>
                 <div class="avatar">
                     <img src="<?php echo esc_url( $profile_img ); ?>" alt="Foto de perfil de Raul Eleutério" />
                 </div>
