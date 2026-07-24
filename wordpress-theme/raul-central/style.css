@@ -2,8 +2,8 @@
 Theme Name: Raul Central Premium
 Theme URI: https://exemplo.com
 Author: Raul Eleutério
-Description: Tema single-page inspirado na Central Premium — céu noturno, meteoros e cards estilo Apple. Baseado em Tailwind-like utilities compiladas em CSS puro.
-Version: 1.0.0
+Description: Tema single-page inspirado na Central Premium — céu noturno, aurora boreal, meteoros e botão em liquid glass estilo Apple.
+Version: 1.2.0
 License: GPL-2.0-or-later
 Text Domain: raul-central
 */
@@ -31,7 +31,36 @@ img{max-width:100%;display:block}
   background-size:cover;background-position:center;
   background-image:var(--bg-night, none);
 }
-.bg-overlay{position:absolute;inset:0;background:rgba(0,0,0,.4)}
+.bg-overlay{position:absolute;inset:0;background:rgba(0,0,0,.6)}
+
+/* ===== Aurora boreal ===== */
+.aurora{
+  position:absolute;inset:0 0 auto 0;height:65vh;
+  opacity:.25;mix-blend-mode:screen;pointer-events:none;overflow:hidden;
+}
+.aurora span{
+  position:absolute;filter:blur(60px);
+  background:linear-gradient(90deg,transparent,rgba(52,211,153,.30),transparent);
+}
+.aurora .a1{
+  left:-20%;top:0;height:100%;width:140%;
+  animation:aurora-1 12s ease-in-out infinite;
+}
+.aurora .a2{
+  right:-10%;top:5%;height:80%;width:120%;
+  background:linear-gradient(270deg,transparent,rgba(94,234,212,.25),transparent);
+  filter:blur(70px);
+  animation:aurora-2 16s ease-in-out infinite;
+  animation-delay:2s;
+}
+@keyframes aurora-1{
+  0%,100%{transform:translateX(-10%);opacity:.4}
+  50%{transform:translateX(10%);opacity:.7}
+}
+@keyframes aurora-2{
+  0%,100%{transform:translateX(5%);opacity:.3}
+  50%{transform:translateX(-15%);opacity:.6}
+}
 
 /* ===== Meteoros ===== */
 .meteor{
@@ -44,23 +73,23 @@ img{max-width:100%;display:block}
   will-change:transform;
 }
 .meteor-1{
-  top:2vh; width:112px;
+  top:1vh; width:112px;
   animation:meteor-fly-1 11s linear infinite both;
 }
 .meteor-2{
-  top:22vh; width:96px;
+  top:6vh; width:96px;
   animation:meteor-fly-2 11s linear infinite both;
   animation-delay:3s;
 }
 @keyframes meteor-fly-1{
   0%{transform:translate(30vw,0) rotate(-8deg)}
-  36%{transform:translate(-140vw,15vh) rotate(-8deg)}
-  100%{transform:translate(-140vw,15vh) rotate(-8deg)}
+  36%{transform:translate(-140vw,8vh) rotate(-8deg)}
+  100%{transform:translate(-140vw,8vh) rotate(-8deg)}
 }
 @keyframes meteor-fly-2{
   0%{transform:translate(30vw,0) rotate(-10deg)}
-  45%{transform:translate(-140vw,15vh) rotate(-10deg)}
-  100%{transform:translate(-140vw,15vh) rotate(-10deg)}
+  45%{transform:translate(-140vw,8vh) rotate(-10deg)}
+  100%{transform:translate(-140vw,8vh) rotate(-10deg)}
 }
 
 /* ===== Conteúdo ===== */
@@ -77,12 +106,6 @@ img{max-width:100%;display:block}
 /* Hero */
 .hero{display:flex;flex-direction:column;align-items:center;text-align:center}
 .avatar-wrap{position:relative;height:6rem;width:6rem}
-.avatar-ring{
-  position:absolute;inset:-3px;border-radius:9999px;
-  background:conic-gradient(from 0deg,#3a3a3c,#1c1c1e,#48484a,#1c1c1e,#3a3a3c);
-  animation:spin 22s linear infinite;
-}
-@keyframes spin{to{transform:rotate(360deg)}}
 .avatar{
   position:relative;height:6rem;width:6rem;border-radius:9999px;
   overflow:hidden;
@@ -118,43 +141,67 @@ img{max-width:100%;display:block}
   0%{background-position:0% 50%}
   100%{background-position:200% 50%}
 }
-.handle{font-size:.875rem;color:rgba(255,255,255,.5);font-weight:500}
+.handle{font-size:.875rem;color:rgba(255,255,255,.5);font-weight:500;margin:0}
+.handle a{transition:color .2s ease}
 .handle a:hover{color:#fff}
 
-/* Cards */
+/* ===== Cards (Liquid Glass Apple) ===== */
 .cards{margin-top:2.5rem;display:flex;flex-direction:column;gap:.75rem}
 .card{
   position:relative;display:flex;align-items:center;gap:1rem;
-  padding:1rem;border-radius:1rem;overflow:hidden;
-  border:1px solid rgba(255,255,255,.1);
-  background:linear-gradient(to bottom,rgba(255,255,255,.06),rgba(255,255,255,.02));
-  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
-  box-shadow:inset 0 1px 0 0 rgba(255,255,255,.06),0 20px 60px -20px rgba(0,0,0,.8);
-  transition:border-color .2s ease, transform .15s ease;
+  padding:1rem;border-radius:22px;overflow:hidden;
+  border:1px solid rgba(255,255,255,.22);
+  background:linear-gradient(to bottom,rgba(255,255,255,.16),rgba(255,255,255,.07) 50%,rgba(255,255,255,.02));
+  backdrop-filter:blur(32px) saturate(140%);
+  -webkit-backdrop-filter:blur(32px) saturate(140%);
+  box-shadow:
+    inset 0 1px 1px 0 rgba(255,255,255,.18),
+    inset 0 0 0 1px rgba(255,255,255,.05),
+    0 20px 60px -20px rgba(0,0,0,.85);
+  transition:border-color .3s ease, box-shadow .3s ease, transform .15s ease;
 }
-.card:hover{border-color:rgba(255,255,255,.2)}
+.card:hover{
+  border-color:rgba(255,255,255,.32);
+  box-shadow:
+    inset 0 1px 1px 0 rgba(255,255,255,.26),
+    inset 0 0 0 1px rgba(255,255,255,.08),
+    0 24px 70px -20px rgba(0,0,0,.9);
+}
 .card:active{transform:scale(.985)}
+
+/* Brilho interno liquid glass */
+.card::before{
+  content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;
+  background:linear-gradient(to bottom,rgba(255,255,255,.20),rgba(255,255,255,.04) 40%,transparent);
+  opacity:.7;
+}
+/* Reflexo superior (specular rim) */
+.card::after{
+  content:"";position:absolute;left:0;right:0;top:0;height:1px;pointer-events:none;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.5),transparent);
+}
+
 .card-icon{
+  position:relative;z-index:1;
   display:grid;place-items:center;
   height:3rem;width:3rem;border-radius:.75rem;flex-shrink:0;
   box-shadow:inset 0 0 0 1px rgba(255,255,255,.1);
   background:linear-gradient(135deg,#3f3f46,#18181b);color:#fff;
+  transition:transform .3s ease;
 }
+.card:hover .card-icon{transform:rotate(6deg) scale(1.08)}
 .card-icon svg{height:1.25rem;width:1.25rem}
-.card-body{flex:1;min-width:0}
-.card-title{display:flex;align-items:center;gap:.5rem;font-weight:600;color:#fff;letter-spacing:-.01em}
-.card-desc{margin-top:.125rem;font-size:.875rem;color:rgba(255,255,255,.55);white-space:pre-line}
-.card-arrow{flex-shrink:0;color:rgba(255,255,255,.4);transition:color .3s ease}
-.card:hover .card-arrow{color:#fff}
+.card-body{position:relative;z-index:1;flex:1;min-width:0}
+.card-title{display:block;font-weight:600;color:#fff;letter-spacing:-.01em;font-size:1rem}
+.card-desc{margin-top:.125rem;display:block;font-size:.875rem;color:rgba(255,255,255,.55);white-space:pre-line}
+.card-arrow{position:relative;z-index:1;flex-shrink:0;color:rgba(255,255,255,.4);transition:color .3s ease,transform .3s ease}
+.card:hover .card-arrow{color:#fff;transform:translate(3px,-3px)}
 .card-arrow svg{height:1.25rem;width:1.25rem}
 
-/* Themed cards */
-.card-recpro::before{
-  content:"";position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(135deg,rgba(220,38,38,.4),rgba(190,18,60,.25),transparent);
-  mix-blend-mode:overlay;opacity:.7;
-}
+/* Texto de apoio */
+.subtext{margin:1.5rem 0 0;text-align:center;font-size:.875rem;color:rgba(255,255,255,.5)}
 
+/* Socials */
 .socials{display:flex;justify-content:center;gap:.75rem}
 .social{
   display:grid;place-items:center;
